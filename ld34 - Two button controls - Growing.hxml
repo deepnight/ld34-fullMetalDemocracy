@@ -1,9 +1,0 @@
--cp src
--swf bin/client.swf
--swf-header 960:720:30:000000
--swf-version 15.0
--main App
--D standalone
--lib castle
--lib heaps
--dce full

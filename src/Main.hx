@@ -11,6 +11,7 @@ class Main extends mt.Process {
 		hxd.Timer.wantedFPS = Const.FPS;
 
 		createRoot(Boot.ME.s2d);
+		root.filter = new h2d.filter.ColorMatrix();
 
 		var music = new mt.deepnight.Sfx(hxd.Res.music);
 		music.playOnGroup(1, true, 0.7);

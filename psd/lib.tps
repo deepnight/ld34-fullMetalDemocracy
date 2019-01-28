@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>spine</string>
         <key>textureFileName</key>
-        <filename>lib.png</filename>
+        <filename>../res/lib.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -330,6 +330,19 @@
                 <rect>14,11,27,22</rect>
                 <key>scale9Paddings</key>
                 <rect>14,11,27,22</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">export/border.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>108,79,217,157</rect>
+                <key>scale9Paddings</key>
+                <rect>108,79,217,157</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -793,6 +806,20 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">export/logo.png</key>
+            <key type="filename">logo.psd</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,60,160,120</rect>
+                <key>scale9Paddings</key>
+                <rect>80,60,160,120</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">export/missile.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -927,19 +954,6 @@
                 <rect>5,5,10,9</rect>
                 <key>scale9Paddings</key>
                 <rect>5,5,10,9</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">logo.psd</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>80,60,160,120</rect>
-                <key>scale9Paddings</key>
-                <rect>80,60,160,120</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

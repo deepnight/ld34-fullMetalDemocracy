@@ -102,7 +102,7 @@ class Level extends mt.Process {
 				}
 
 			}
-		ground.filter = new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1);
+		// ground.filter = new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1);
 		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1) );
 		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x996D51,1) );
 
@@ -126,7 +126,7 @@ class Level extends mt.Process {
 			}
 		//#end
 
-		creep.filter = new h2d.filter.Glow(0xC27A89,0.7, 1,1,1);
+		// creep.filter = new h2d.filter.Glow(0xC27A89,0.7, 1,1,1);
 
 
 		#if debug
@@ -153,8 +153,7 @@ class Level extends mt.Process {
 	public function addCreep(cx,cy, ?center=false) {
 		if( !hasCreep(cx,cy) ) {
 			creepMap.set(cx+cy*wid, true);
-			var t = Assets.lib.getTileRandom("grass");
-			//var t = Assets.lib.getTileRandom(center ? "creepPop" : "creep");
+			var t = Assets.lib.getTileRandom(center ? "creepPop" : "creep");
 			creep.add( Std.int((cx+0.5)*Const.GRID-t.width*0.5), Std.int((cy+0.5)*Const.GRID-t.height*0.5), t);
 			creep.invalidate();
 		}

@@ -22,7 +22,7 @@ class Game extends mt.Process {
 		ME = this;
 		ended = false;
 
-		initGraphicContext(Main.ME.cached);
+		createRoot(Main.ME.root);
 		scroller = new h2d.Layers(root);
 
 		level = new Level(lid);
@@ -39,7 +39,7 @@ class Game extends mt.Process {
 
 		for(pt in level.getSpots("zergWander")) {
 			var e = new en.m.Zergling((pt.cx+0.5)*Const.GRID, (pt.cy+0.5)*Const.GRID, null);
-			e.cd.set("fixed", 99999);
+			e.cd.setF("fixed", 99999);
 		}
 
 		var spots = level.getSpots("human");
@@ -56,12 +56,12 @@ class Game extends mt.Process {
 
 		new MiniMap();
 
-		delayer.add( function() {
+		delayer.addMs( function() {
 			if( lid>0 )
 				notify("ENTERING SECTOR #"+level.lid, "CAUTION: contamined area.");
 
 			if( lid==0 )
-				delayer.add(function() {
+				delayer.addMs(function() {
 					message("Use ARROW keys to move. Attacks are automatics.", true);
 				},500);
 		},350);
@@ -70,7 +70,7 @@ class Game extends mt.Process {
 
 		switch( lid ) {
 			case 0 :
-				cd.set("lockSwitch", 99999);
+				cd.setF("lockSwitch", 99999);
 
 			default :
 		}
@@ -83,7 +83,7 @@ class Game extends mt.Process {
 		if( en.Quad.ALL.length==0 || cd.has("switch") )
 			return;
 
-		cd.set("switch",3);
+		cd.setF("switch",3);
 		var idx = 0;
 		for(e in en.Quad.ALL) {
 			if( e==current )
@@ -132,8 +132,8 @@ class Game extends mt.Process {
 	}
 
 
-	public function tutorial(id:String, str:String) {
-		if( !cd.hasSet("t_"+id, 99999) ) {
+	public function tutorial(id:Int, str:String) {
+		if( !cd.hasSetF("t_"+id, 99999) ) {
 			message(str, true);
 			return true;
 		}
@@ -142,14 +142,14 @@ class Game extends mt.Process {
 
 
 	public function message(str:String, ?col=0xC0CEE7, ?perma=false) {
-		var wrapper = new h2d.Sprite();
+		var wrapper = new h2d.Object();
 		root.add(wrapper, Const.DP_UI);
 
-		Assets.SBANK.msg01().play(0.8, 1);
+		Assets.SBANK.msg01().play(0.8);
 
 		var maxWid = 100;
 
-		var bg = new h2d.Bitmap( h2d.Tile.fromColor(alpha(0x121223)), wrapper );
+		var bg = new h2d.Bitmap( h2d.Tile.fromColor(addAlpha(0x121223)), wrapper );
 		bg.alpha = 0.85;
 
 		var tf = new h2d.Text(Assets.font, wrapper);
@@ -158,7 +158,7 @@ class Game extends mt.Process {
 		tf.setScale(1);
 		tf.textColor = col;
 
-		cd.set("alive", secToFrames(4));
+		cd.setF("alive", secToFrames(4));
 
 		if( lastMsg!=null )
 			lastMsg.destroy();
@@ -167,7 +167,7 @@ class Game extends mt.Process {
 			function(p) {
 				if( !cd.has("alive") && !perma ) {
 					p.destroy();
-					tw.create(wrapper.x, Const.LWID, 1000).end(wrapper.remove);
+					tw.createMs(wrapper.x, Const.LWID, 1000).end(wrapper.remove);
 				}
 			},
 			function(p) {
@@ -181,22 +181,22 @@ class Game extends mt.Process {
 		var h = (tf.textHeight*tf.scaleY + p*2 );
 		bg.scaleX = (maxWid+p*2) / bg.tile.width;
 		bg.scaleY = h / bg.tile.height;
-		tf.setPos(p,p);
+		tf.setPosition(p,p);
 
 		wrapper.x = Const.LWID-maxWid*wrapper.scaleX-p*2;
-		tw.create(wrapper.y, Const.LHEI>Const.LHEI*0.2, 700, TEaseOut);
-		//tw.create(wrapper.x, -maxWid*wrapper.scaleX>Const.LWID-maxWid*wrapper.scaleX-p*2, 700, TEaseOut);
+		tw.createMs(wrapper.y, Const.LHEI>Const.LHEI*0.2, 700, TEaseOut);
+		//tw.createMs(wrapper.x, -maxWid*wrapper.scaleX>Const.LWID-maxWid*wrapper.scaleX-p*2, 700, TEaseOut);
 	}
 
 
 
 	public function notify(title:String, sub:String, ?col=0xA5ACCB, ?bg=0x121223, ?perma=false) {
-		var wrapper = new h2d.Sprite();
+		var wrapper = new h2d.Object();
 		root.add(wrapper, Const.DP_UI);
-		tw.create(wrapper.alpha, 0>1, 350);
-		tw.create(wrapper.y, 0>Const.LHEI*0.2, 500, TEaseOut);
+		tw.createMs(wrapper.alpha, 0>1, 350);
+		tw.createMs(wrapper.y, 0>Const.LHEI*0.2, 500, TEaseOut);
 
-		var blurWrapper = new h2d.Sprite(wrapper);
+		var blurWrapper = new h2d.Object(wrapper);
 
 		var bar = Assets.lib.h_get("notifBg", wrapper);
 		bar.colorize(bg, 0.8);
@@ -207,31 +207,31 @@ class Game extends mt.Process {
 		tf.text = title;
 		tf.setScale(2);
 		tf.textColor = col;
-		tf.setPos(Const.LWID*0.5- tf.textWidth*tf.scaleX*0.5, 0);
+		tf.setPosition(Const.LWID*0.5- tf.textWidth*tf.scaleX*0.5, 0);
 		var title = tf;
 
 		var tf = new h2d.Text(Assets.font, wrapper);
 		tf.text = sub;
 		tf.textColor = 0xffffff;
-		tf.setPos(Const.LWID*0.5- tf.textWidth*tf.scaleX*0.5, 25);
+		tf.setPosition(Const.LWID*0.5- tf.textWidth*tf.scaleX*0.5, 25);
 		var sub = tf;
 
-		cd.set("alive", secToFrames(4));
+		cd.setF("alive", secToFrames(4));
 
 		createChildProcess(function(p) {
-			if( !cd.hasSet("blur",1) ) {
+			if( !cd.hasSetF("blur",1) ) {
 				var s = Assets.lib.h_get("blur", blurWrapper);
 				s.colorize(bg, rnd(0.2, 0.3));
-				s.constraintSize(Const.LWID);
+				s.fitToBox(Const.LWID);
 				s.x = Const.LWID*rnd(0.5,1);
 				s.scaleY *= 0.35;
 				s.y = rnd(0,bar.tile.height*bar.scaleY-s.tile.height*s.scaleY);
-				tw.create(s.alpha, 0, 500);
-				tw.create(s.x, s.x-Const.LWID*1.5, TLinear, 500).end( s.remove );
+				tw.createMs(s.alpha, 0, 500);
+				tw.createMs(s.x, s.x-Const.LWID*1.5, TLinear, 500).end( s.remove );
 			}
 			if( !cd.has("alive") && !perma ) {
 				p.destroy();
-				tw.create(wrapper.alpha, 1>0, 1500).end(wrapper.remove);
+				tw.createMs(wrapper.alpha, 1>0, 1500).end(wrapper.remove);
 			}
 		});
 	}
@@ -244,11 +244,11 @@ class Game extends mt.Process {
 
 	function win() {
 		ended = true;
-		cd.set("won",9999);
+		cd.setF("won",9999);
 
 		clearMsg();
 
-		var wrapper = new h2d.Sprite();
+		var wrapper = new h2d.Object();
 		root.add(wrapper, Const.DP_UI);
 
 		notify("SECTOR CLEARED!", "Enemy expansion stopped!", 0xFFDF00, true);
@@ -264,16 +264,16 @@ class Game extends mt.Process {
 		].join("\n");
 		tf.x = Const.LWID*0.5 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = Const.LHEI*0.4;
-		tw.create(tf.x, 250|Const.LWID>tf.x, 350);
+		tw.createMs(tf.x, 250|Const.LWID>tf.x, 350);
 
 		teint(0xBB4004, 0.5);
 	}
 
 	function teint(c, tr) {
 		var f = new h2d.filter.ColorMatrix();
-		scroller.filters.push(f);
+		scroller.filter = f;
 		var r = 0.;
-		tw.create( r, tr, 2000).update( function() {
+		tw.createMs( r, tr, 2000).update( function() {
 			f.matrix = mt.deepnight.Color.getColorizeMatrixH2d(c, r, 1-r);
 		});
 	}
@@ -284,7 +284,7 @@ class Game extends mt.Process {
 
 		clearMsg();
 
-		var wrapper = new h2d.Sprite();
+		var wrapper = new h2d.Object();
 		root.add(wrapper, Const.DP_UI);
 
 		notify("You failed!", "The contamination reached 50% of the area!", 0xFF0000, true);
@@ -297,7 +297,7 @@ class Game extends mt.Process {
 		].join("\n");
 		tf.x = Const.LWID*0.5 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = Const.LHEI*0.4;
-		tw.create(tf.x, 250|Const.LWID>tf.x, 350);
+		tw.createMs(tf.x, 250|Const.LWID>tf.x, 350);
 
 		teint(0x970000,0.7);
 	}
@@ -305,7 +305,7 @@ class Game extends mt.Process {
 
 	override public function postUpdate() {
 		super.postUpdate();
-		Assets.lib.updateChildren(dt);
+		mt.heaps.slib.SpriteLib.TMOD = tmod;
 	}
 
 	function nextLevel() {
@@ -324,7 +324,7 @@ class Game extends mt.Process {
 				message("You cannot destroy GENERATORS using your current weapon. Press SPACE to switch to your secondary robot.", true);
 			}
 			if( current.id==1 )
-				tutorial("missiles", "Missiles from this robot can destroy GENERATORS, but have NO effect on enemy TROOPS.");
+				tutorial(0, "Missiles from this robot can destroy GENERATORS, but have NO effect on enemy TROOPS.");
 		}
 
 		var s = 0.3;
@@ -333,7 +333,7 @@ class Game extends mt.Process {
 		scroller.x = MLib.fclamp(scroller.x, -level.wid*Const.GRID+Const.LWID, 0);
 		scroller.y = MLib.fclamp(scroller.y, -level.hei*Const.GRID+Const.LHEI, 0);
 
-		if( ended && Key.isPressed(Key.C) && !cd.hasSet("clock",9999) ) {
+		if( ended && Key.isPressed(Key.C) && !cd.hasSetF("clock",9999) ) {
 			Assets.SBANK.menu01(0.8);
 			if( cd.has("won") )
 				nextLevel();
@@ -356,7 +356,7 @@ class Game extends mt.Process {
 			win();
 
 		for(w in [30,40])
-			if( MiniMap.ME.creepRatio>=w/100 && !cd.hasSet("warn"+w, 99999) )
+			if( MiniMap.ME.creepRatio>=w/100 && !cd.hasSetF("warn"+w, 99999) )
 				notify("WARNING", "Sector contamination at "+w+"%!", 0xFFCF28, 0xFF0000);
 
 		for(e in Scenery.ALL)

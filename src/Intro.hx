@@ -4,17 +4,17 @@ class Intro extends mt.Process {
 	public function new() {
 		super(Main.ME);
 
-		initGraphicContext(Main.ME.cached);
+		createRoot(Main.ME.root);
 
 		var logo = Assets.lib.h_get("logo", 0.5,0.5, root);
-		logo.setPos(Const.LWID*0.5, Const.LHEI*0.5);
-		tw.create(logo.alpha, 0>1, 500);
+		logo.setPosition(Const.LWID*0.5, Const.LHEI*0.5);
+		tw.createMs(logo.alpha, 0>1, 500);
 
 		var tf = new h2d.Text(Assets.font, root);
 		tf.text = "A game by Sébastien Bénard";
 		tf.x = Const.LWID*0.5 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = Const.LHEI*0.62;
-		tw.create(tf.alpha, 500|0>1, 1500);
+		tw.createMs(tf.alpha, 500|0>1, 1500);
 		var tf1 = tf;
 
 		var tf = new h2d.Text(Assets.font, root);
@@ -22,17 +22,17 @@ class Intro extends mt.Process {
 		tf.text = "Click to start";
 		tf.x = Const.LWID*0.5 - tf.textWidth*tf.scaleX*0.5;
 		tf.y = Const.LHEI*0.8;
-		tw.create(tf.alpha, 1200|0>1, 1500);
+		tw.createMs(tf.alpha, 1200|0>1, 1500);
 		var tf2 = tf;
 
 		var i = new h2d.Interactive(w(), h(), root);
 		i.onClick = function(_) {
-			if( !cd.hasSet("click",9999) ) {
-				cd.set("exit", 30);
+			if( !cd.hasSetF("click",9999) ) {
+				cd.setF("exit", 30);
 				Assets.SBANK.menu01(0.8);
-				tw.create(tf1.alpha, 0, 500);
-				tw.create(tf2.alpha, 0, 500);
-				tw.create(logo.y, logo.y-100, 250, TEaseIn);
+				tw.createMs(tf1.alpha, 0, 500);
+				tw.createMs(tf2.alpha, 0, 500);
+				tw.createMs(logo.y, logo.y-100, 250, TEaseIn);
 
 				var tf = new h2d.Text(Assets.font, root);
 				tf.textColor = 0x95B3DF;
@@ -48,9 +48,9 @@ class Intro extends mt.Process {
 				tf.x = Const.LWID*0.5 - tf.maxWidth*tf.scaleX*0.5;
 				tf.y = Const.LHEI*0.35;
 				tf.textAlign = Center;
-				tw.create(tf.alpha, 500|0>1, 1000);
+				tw.createMs(tf.alpha, 500|0>1, 1000);
 			}
-			else if( !cd.has("exit") && cd.has("click") && !cd.hasSet("click2",9999) ) {
+			else if( !cd.has("exit") && cd.has("click") && !cd.hasSetF("click2",9999) ) {
 				Assets.SBANK.menu01(0.8);
 				Main.ME.transition(this, function() new Game());
 			}

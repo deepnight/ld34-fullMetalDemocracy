@@ -17,7 +17,7 @@ class Level extends mt.Process {
 
 		this.lid = lid;
 
-		initGraphicContextInLayers(Game.ME.scroller, Const.DP_BG);
+		createRootInLayers(Game.ME.scroller, Const.DP_BG);
 
 		spots = new Map();
 		creepMap = new Map();
@@ -37,15 +37,22 @@ class Level extends mt.Process {
 
 
 		// Source parsing
-		var source = Assets.lib.getBitmapData("level", lid);
-		source.lock();
-		wid = source.width;
-		hei = source.height;
+		var pixels = switch(lid) {
+			case 0 : hxd.Res.level0.getPixels();
+			case 1 : hxd.Res.level1.getPixels();
+			case 2 : hxd.Res.level2.getPixels();
+			case _ : hxd.Res.level3.getPixels();
+		}
+		// var source = Assets.lib.getBitmapData("level", lid);
+		// source.lock();
+		wid = pixels.width;
+		hei = pixels.height;
 		colMap = [];
 		for(cx in 0...wid) {
 			colMap[cx] = [];
 			for(cy in 0...wid) {
-				var p = source.getPixel(cx,cy);
+				// var p = source.getPixel(cx,cy);
+				var p = pixels.getPixel(cx,cy);
 				var k = switch( p ) {
 					case 0xffe5bf9f : "road";
 					case 0xffcb4e31 : "house";
@@ -61,7 +68,8 @@ class Level extends mt.Process {
 					addSpot(k,cx,cy);
 			}
 		}
-		source.dispose();
+		pixels.dispose();
+		// source.dispose();
 
 
 		for(pt in getSpots("road"))
@@ -95,8 +103,9 @@ class Level extends mt.Process {
 				}
 
 			}
-		ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1) );
-		ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x996D51,1) );
+		ground.filter = new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1);
+		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1) );
+		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x996D51,1) );
 
 		for(pt in spots.get("house")) {
 			if( !hasSpot("house", pt.cx, pt.cy-1) && !hasSpot("house", pt.cx-1, pt.cy) ) {
@@ -105,7 +114,7 @@ class Level extends mt.Process {
 				addColl(pt.cx, pt.cy, 2,2);
 			}
 		}
-		elements.filters.push( new h2d.filter.Glow(0x0,1, 1,16,2, true) );
+		elements.filter = new h2d.filter.Glow(0x0,1, 1,16,2, true);
 
 		//#if !debug
 		var treeSpots = new Map();
@@ -119,7 +128,7 @@ class Level extends mt.Process {
 			}
 		//#end
 
-		creep.filters.push( new h2d.filter.Glow(0xC27A89,0.7, 1,1,1) );
+		creep.filter = new h2d.filter.Glow(0xC27A89,0.7, 1,1,1);
 
 
 		#if debug

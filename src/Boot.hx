@@ -1,18 +1,11 @@
-class App extends hxd.App {
-	public static var ME : App;
+class Boot extends hxd.App {
+	public static var ME : Boot;
 
 	// Boot
 	static function main() {
-		//#if debug
-		//hxd.res.Resource.LIVE_UPDATE = true;
-		//hxd.Res.initLocal();
-		//Std.instance(hxd.Res.loader.fs, hxd.fs.LocalFileSystem).createMP3 = true;
-		//#else
-		//hxd.Res.initEmbed({compressSounds:true});
-		//#end
 		hxd.Res.initEmbed({compressSounds:true});
 
-		new App();
+		new Boot();
 	}
 
 	// Engine ready
@@ -36,7 +29,7 @@ class App extends hxd.App {
 
 	override function update(dt:Float) {
 		super.update(dt);
-		mt.Process.updateAll(dt);
+		mt.Process.updateAll(hxd.Timer.tmod);
 	}
 }
 

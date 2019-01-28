@@ -30,15 +30,14 @@ class Zergling extends en.Mob {
 		shadow.alpha = Const.SHADOW;
 
 		Game.ME.scroller.add(spr, Const.DP_FLYERS);
-		spr.anim.setGeneralSpeed(0.2);
+		spr.anim.setGlobalSpeed(0.2);
 
 		spr.anim.registerStateAnim("zerglingStun", 1, function() return isStunned());
 		spr.anim.registerStateAnim("zergling", 0);
-		spr.anim.applyStateAnims();
 	}
 
 	public function stun() {
-		cd.set("stun", secToFrames(20));
+		cd.setF("stun", secToFrames(20));
 		Game.ME.fx.stun(x,y);
 	}
 
@@ -92,7 +91,7 @@ class Zergling extends en.Mob {
 		super.updateRender();
 		spr.scaleX = dir;
 		if( shadow!=null )
-			shadow.setPos(spr.x, spr.y + 12);
+			shadow.setPosition(spr.x, spr.y + 12);
 
 		spr.x += Math.cos(ftime*0.05) * 1;
 		spr.y += Math.cos(ftime*0.1) * 2;
@@ -118,7 +117,7 @@ class Zergling extends en.Mob {
 				ty = originY;
 			}
 			precision = 0;
-			cd.set("idle", rnd(15,30));
+			cd.setF("idle", rnd(15,30));
 		}
 
 		if( !cd.has("idle") && !isStunned() ) {
@@ -133,13 +132,13 @@ class Zergling extends en.Mob {
 			if( dx<-0.1 ) dir = -1;
 			if( dx>-0.1 ) dir = 1;
 
-			if( !cd.hasSet("shake", 9) ) {
+			if( !cd.hasSetF("shake", 9) ) {
 				for(e in Scenery.ALL)
 					if( e.isColliding(this) )
 						e.shake();
 			}
 
-			if( !cd.hasSet("ccheck", 30) ) {
+			if( !cd.hasSetF("ccheck", 30) ) {
 				var level = Game.ME.level;
 				if( !level.hasCreep(cx-1,cy) && !level.hasCreep(cx+1,cy) && !level.hasCreep(cx,cy-1) && !level.hasCreep(cx,cy+1) ) {
 					if( !cd.has("fixed") )

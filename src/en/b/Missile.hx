@@ -28,7 +28,7 @@ class Missile extends en.Bullet {
 		dx = Math.cos(a)*d;
 		dy = Math.sin(a)*d;
 		frict = 0.9;
-		cd.set("launch", rnd(7,10));
+		cd.setF("launch", rnd(7,10));
 
 		//spr.alpha = 0;
 		//spr.setScale(0);
@@ -37,8 +37,8 @@ class Missile extends en.Bullet {
 	}
 
 
-	override public function setPos(x, y) {
-		super.setPos(x, y);
+	override public function setPosition(x, y) {
+		super.setPosition(x, y);
 		lastX = x;
 		lastY = y;
 	}
@@ -75,7 +75,7 @@ class Missile extends en.Bullet {
 		super.update();
 
 		if( !active && !cd.has("launch") && !cd.has("ignite") ) {
-			cd.set("ignite", 5);
+			cd.setF("ignite", 5);
 			cd.onComplete("ignite", function() {
 				Game.ME.fx.ignite(x,y, ang);
 				active = true;
@@ -108,7 +108,7 @@ class Missile extends en.Bullet {
 			dy+=Math.sin(ang)*spd;
 
 			if( MLib.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
-				cd.set("lockDir", rnd(5,8));
+				cd.setF("lockDir", rnd(5,8));
 				dx*=0.9;
 				dy*=0.9;
 				precision = 0.5;

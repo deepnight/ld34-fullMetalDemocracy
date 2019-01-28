@@ -47,9 +47,9 @@ class Mob extends Entity {
 		if( bar!=null ) {
 			var r = life/maxLife;
 			bar.scaleX = r;
-			bar.setPos(x-bwid*0.5, y-bhei-19);
-			barBg.setPos(bar.x-1, bar.y-1);
-			bar.color.setColor(alpha(
+			bar.setPosition(x-bwid*0.5, y-bhei-19);
+			barBg.setPosition(bar.x-1, bar.y-1);
+			bar.color.setColor(addAlpha(
 				r>=0.8 ? 0xDEF000 :
 				r>=0.5 ? 0xFFF200 :
 				r>=0.25 ? 0xFF8600 :

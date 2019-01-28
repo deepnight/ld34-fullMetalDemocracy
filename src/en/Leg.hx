@@ -19,7 +19,7 @@ class Leg extends Entity {
 		super(0,0);
 		ALL.push(this);
 		quad = q;
-		setPos(quad.x, quad.y);
+		setPosition(quad.x, quad.y);
 		spr.set("foot", quad.skin);
 		frict = 0.6;
 		radius = 20;
@@ -39,8 +39,8 @@ class Leg extends Entity {
 		legShadow.alpha = Const.SHADOW;
 	}
 
-	override public function setPos(x, y) {
-		super.setPos(x, y);
+	override public function setPosition(x, y) {
+		super.setPosition(x, y);
 		tx = x;
 		ty = y;
 	}
@@ -78,15 +78,15 @@ class Leg extends Entity {
 			var r = 10;
 			var bx = quad.bodyX + Math.cos(a)*r;
 			var by = quad.bodyY + Math.sin(a)*r;
-			arm.setPos(x + (bx-x)*0.5, y + (by-y)*0.5);
+			arm.setPosition(x + (bx-x)*0.5, y + (by-y)*0.5);
 			arm.scaleX = mt.deepnight.Lib.distance(bx,by, x,y) / arm.tile.width;
 			arm.rotation = a;
 
-			footBox.setPos(x-Math.cos(a)*5,y-Math.sin(a)*5);
+			footBox.setPosition(x-Math.cos(a)*5,y-Math.sin(a)*5);
 			footBox.rotation = a+MLib.PI;
 			footBox.setScale(1+z*0.7);
 
-			bodyBox.setPos(bx,by);
+			bodyBox.setPosition(bx,by);
 			bodyBox.rotation = a;
 			//bodyBox.setScale(1+z*0.5);
 			bodyBox.scaleX = mt.deepnight.Lib.distance(bx,by, x,y)*0.4 / bodyBox.tile.width;
@@ -94,7 +94,7 @@ class Leg extends Entity {
 			spr.setScale(1+z*0.4);
 			spr.y+=5;
 
-			legShadow.setPos(arm.x, arm.y+5);
+			legShadow.setPosition(arm.x, arm.y+5);
 			legShadow.rotation = arm.rotation;
 			legShadow.scaleX = arm.scaleX;
 		}
@@ -110,14 +110,14 @@ class Leg extends Entity {
 
 		if( MLib.fabs(x-tx)<=5 && MLib.fabs(y-ty)<=5 ) {
 			if( dx!=0 || dy!=0 ) {
-				mt.flash.Sfx.playOne([
-					Assets.SBANK.step01,
-					Assets.SBANK.step02,
-					Assets.SBANK.step03,
-				], 0.2*quad.vol);
+				// mt.flash.Sfx.playOne([
+				// 	Assets.SBANK.step01,
+				// 	Assets.SBANK.step02,
+				// 	Assets.SBANK.step03,
+				// ], 0.2*quad.vol); // TODO
 				var s = Assets.lib.h_get("smokeCircle",0.5,0.5);
 				Game.ME.scroller.add(s, Const.DP_BG);
-				s.setPos(x,y);
+				s.setPosition(x,y);
 				Game.ME.level.addDirt(x,y, "hole", rnd(0.05, 0.2));
 				createChildProcess( function(p) {
 					s.alpha*=0.7;
@@ -143,8 +143,8 @@ class Leg extends Entity {
 			var a = Math.atan2(ty-y, tx-x);
 			dx+=Math.cos(a)*spd;
 			dy+=Math.sin(a)*spd;
-			quad.cd.set("legMoving", 4);
-			//quad.cd.set("legMoving", quad.id==0 ? 4 : 6);
+			quad.cd.setF("legMoving", 4);
+			//quad.cd.setF("legMoving", quad.id==0 ? 4 : 6);
 			quad.z+=0.1;
 			if( z<=1 )
 				z+=0.2;

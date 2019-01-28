@@ -1,4 +1,5 @@
 class Const {
+	public static var FPS = 30;
 	public static var UPSCALE = 2;
 	public static var GRID = 16;
 	public static var SHORT_KEY_THRESHOLD = 5;

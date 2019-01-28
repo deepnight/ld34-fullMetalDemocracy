@@ -1,10 +1,11 @@
 import mt.heaps.HParticle;
 class Fx extends mt.Process {
+	var pool : ParticlePool;
 	var addSb			: h2d.SpriteBatch;
-	var adds			: Array<HParticle>;
+	// var adds			: Array<HParticle>;
 
 	var normalSb		: h2d.SpriteBatch;
-	var normals			: Array<HParticle>;
+	// var normals			: Array<HParticle>;
 
 	var lib(get,never)	: mt.heaps.slib.SpriteLib; inline function get_lib() return Assets.lib;
 
@@ -20,22 +21,21 @@ class Fx extends mt.Process {
 		Game.ME.scroller.add(normalSb, Const.DP_FX);
 		normalSb.hasRotationScale = true;
 
-		adds = HParticle.initPool(addSb, 400);
-		normals = HParticle.initPool(normalSb, 300);
+		pool = new ParticlePool(Assets.lib.tile, 1024, Const.FPS);
+		// adds = HParticle.initPool(addSb, 400);
+		// normals = HParticle.initPool(normalSb, 300);
 	}
 
 	override public function onDispose() {
 		super.onDispose();
-		for(p in adds)
-			p.dispose();
-		for(p in normals)
-			p.dispose();
+		pool.dispose();
 		addSb.remove();
 		normalSb.remove();
 	}
 
 	function alloc(t:h2d.Tile, x:Float, y:Float, ?additive=true) {
-		var p = HParticle.allocFromPool(additive?adds:normals, t, x,y);
+		// var p = HParticle.allocFromPool(additive?adds:normals, t, x,y);
+		var p = pool.alloc(additive?addSb:normalSb, t, x,y);
 		p.setCenterRatio(0.5,0.5);
 		return p;
 	}
@@ -46,7 +46,7 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.2, 0.5);
 		p.ds = 0.2;
 		p.scaleMul = 0.93;
-		p.life = 0;
+		p.lifeF = 0;
 
 		var p = alloc(lib.getTile("whiteSmoke"), x+rnd(0,10,true),y+rnd(0,10,true), true);
 		p.setScale( rnd(1,1.5) );
@@ -57,7 +57,7 @@ class Fx extends mt.Process {
 		p.dr = rnd(0,0.02,true);
 		p.fadeOutSpeed = 0.01;
 		p.scaleMul = 0.98;
-		p.life = rnd(20,40);
+		p.lifeF = rnd(20,40);
 	}
 
 	public function hit(x,y) {
@@ -66,13 +66,13 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.2, 0.5);
 		p.ds = 0.2;
 		p.scaleMul = 0.93;
-		p.life = 0;
+		p.lifeF = 0;
 
 		var p = alloc(lib.getTile("explosion"), x,y, true);
 		p.setScale(rnd(0.3,0.4));
 		p.alpha = 0.2;
 		p.scaleMul = 1.005;
-		p.life = 1;
+		p.lifeF = 1;
 	}
 
 	public function stun(x,y) {
@@ -81,7 +81,7 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.2, 0.5);
 		p.ds = 0.4;
 		p.dsFrict = 0.9;
-		p.life = 2;
+		p.lifeF = 2;
 	}
 
 	public function smokeFoot(x,y) {
@@ -89,13 +89,13 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.2, 0.5);
 		p.ds = 0.5;
 		p.scaleMul = 0.8;
-		p.life = 0;
+		p.lifeF = 0;
 	}
 
 	public function marker(x,y) {
 		#if debug
 		var p = alloc(lib.getTile("bulletEnemy"), x,y);
-		p.life = 3;
+		p.lifeF = 3;
 		#end
 	}
 
@@ -108,7 +108,7 @@ class Fx extends mt.Process {
 			p.dy = i<=4 ? -rnd(7,12) : -rnd(2,6);
 			p.gy = rnd(0.3, 0.5);
 			p.frict = 0.95;
-			p.life = rnd(30,90);
+			p.lifeF = rnd(30,90);
 			p.rotation = rnd(0,6.28);
 			p.dr = rnd(0,0.25,true);
 			p.groundY = y+rnd(0,40);
@@ -128,7 +128,7 @@ class Fx extends mt.Process {
 			p.dy = -rnd(1,3);
 			p.gy = rnd(0.3, 0.5);
 			p.frict = 0.94;
-			p.life = rnd(5,30);
+			p.lifeF = rnd(5,30);
 			p.rotation = rnd(0,6.28);
 			p.dr = rnd(0,0.25,true);
 			p.groundY = y+rnd(0,40);
@@ -148,7 +148,7 @@ class Fx extends mt.Process {
 			p.frict = 0.94;
 			p.fadeIn( rnd(0.4, 1), 0.1 );
 			p.fadeOutSpeed = rnd(0.03, 0.10);
-			p.life = rnd(0,30);
+			p.lifeF = rnd(0,30);
 		}
 
 		if( Game.ME.itime%10==0 ) {
@@ -159,7 +159,7 @@ class Fx extends mt.Process {
 			p.frict = 0.8;
 			p.fadeIn( rnd(0.3, 0.5), 0.02 );
 			p.fadeOutSpeed = rnd(0.03, 0.05);
-			p.life = rnd(30,60);
+			p.lifeF = rnd(30,60);
 
 		}
 	}
@@ -171,20 +171,20 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.4, 0.7);
 		p.ds = 0.2;
 		p.scaleMul = 0.93;
-		p.life = 0;
+		p.lifeF = 0;
 
 		var p = alloc(lib.getTile("explosion"), x,y, true);
 		p.setScale(n==1 ? 0.6 : 1);
 		p.alpha = n==1 ? 0.7 : 1;
 		p.scaleMul = 1.005;
-		p.life = 1;
+		p.lifeF = 1;
 
 		for(i in 0...n-1) {
 			var p = alloc(lib.getTile("explosion"), x+rnd(4,16,true), y+rnd(4,16,true), true);
 			p.setScale(rnd(0.75, 0.9));
 			p.scaleMul = 0.89;
-			p.life = 0;
-			p.delay = 1 + i + irnd(0,1);
+			p.lifeF = 0;
+			p.delayF = 1 + i + irnd(0,1);
 		}
 	}
 
@@ -194,7 +194,7 @@ class Fx extends mt.Process {
 		p.rotation = a;
 		p.alpha = rnd(0.7, 1);
 		p.scaleMul = 1.005;
-		p.life = 0;
+		p.lifeF = 0;
 	}
 
 
@@ -207,7 +207,7 @@ class Fx extends mt.Process {
 		//p.moveAng(a, 1);
 		p.frict = 0.9;
 		p.fadeOutSpeed = 0.01;
-		p.life = 3;
+		p.lifeF = 3;
 	}
 
 	public function spawn(x,y) {
@@ -215,7 +215,7 @@ class Fx extends mt.Process {
 		p.alpha = rnd(0.8, 1);
 		p.ds = 0.5;
 		p.scaleMul = 0.8;
-		p.life = 0;
+		p.lifeF = 0;
 	}
 
 
@@ -223,7 +223,7 @@ class Fx extends mt.Process {
 		for(i in 0...20) {
 			var p = alloc(lib.getTileRandom("blood"), x,y, false);
 			p.setScale( rnd(0.5,1) );
-			p.life = rnd(5,20);
+			p.lifeF = rnd(5,20);
 			p.dx = rnd(0,2.4, true);
 			p.dy = -rnd(1,4);
 			p.gy = 0.25;
@@ -237,7 +237,7 @@ class Fx extends mt.Process {
 	public function resist(e:Entity) {
 		var p = alloc(lib.getTile("resist"), e.x, e.y);
 		p.setScale(2);
-		p.life = 5;
+		p.lifeF = 5;
 		p.ds = 0.2;
 		p.dsFrict = 0.8;
 	}
@@ -245,8 +245,7 @@ class Fx extends mt.Process {
 	override public function update() {
 		super.update();
 
-		for(p in adds) p.updatePart();
-		for(p in normals) p.updatePart();
+		pool.update(tmod);
 	}
 
 

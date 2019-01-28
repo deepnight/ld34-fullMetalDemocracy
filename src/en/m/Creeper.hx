@@ -31,7 +31,7 @@ class Creeper extends en.Mob {
 		Game.ME.level.addCreepArea(cx,cy, 5);
 		enableBar();
 
-		cd.set("spawn", secToFrames(4));
+		cd.setF("spawn", secToFrames(4));
 	}
 
 	override function onDie() {
@@ -66,8 +66,8 @@ class Creeper extends en.Mob {
 		spr.y += 8;
 		//Game.ME.fx.marker(x,y);
 		if( eye!=null ) {
-			if( !cd.hasSet("eye",rnd(2, 20)) ) {
-				eye.setPos(x-8+irnd(0,2,true), y-7 + irnd(0,1,true));
+			if( !cd.hasSetF("eye",rnd(2, 20)) ) {
+				eye.setPosition(x-8+irnd(0,2,true), y-7 + irnd(0,1,true));
 			}
 		}
 	}
@@ -78,7 +78,7 @@ class Creeper extends en.Mob {
 		spr.scaleX = 1 + Math.cos(ftime*0.9+uniqId)*0.01;
 		spr.scaleY = 1 + Math.cos(ftime*0.1+uniqId)*0.04;
 
-		if( !cd.hasSet("spawn", secToFrames(rnd(1.5,3))) && babies.length<5 ) {
+		if( !cd.hasSetF("spawn", secToFrames(rnd(1.5,3))) && babies.length<5 ) {
 			var e = new en.m.Zergling(x+rnd(3,20,true),y+rnd(3,20,true), this);
 			babies.push(e);
 			Game.ME.fx.spawn(e.x, e.y);

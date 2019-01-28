@@ -18,7 +18,7 @@ class Scenery {
 	public var creeped = false;
 
 	public function new(k:String, front:Bool, x:Float,y:Float) {
-		cd = new mt.Cooldown();
+		cd = new mt.Cooldown(Const.FPS);
 		ALL.push(this);
 		exploded = false;
 		partId = "plank";
@@ -29,7 +29,7 @@ class Scenery {
 		spr = Assets.lib.h_getRandom(k);
 		spr.setCenterRatio(0.5,0.5);
 		Game.ME.scroller.add(spr, front ? Const.DP_BG_FRONTS : Const.DP_BG);
-		spr.setPos(x,y);
+		spr.setPosition(x,y);
 	}
 
 	inline function rnd(min,max,?sign) return Lib.rnd(min,max,sign);
@@ -76,7 +76,7 @@ class Scenery {
 
 	public function shake() {
 		if( solid ) {
-			cd.set("shake", rnd(10,20));
+			cd.setF("shake", rnd(10,20));
 			Game.ME.fx.shakeGibs(x,y, partId);
 		}
 	}
@@ -91,7 +91,7 @@ class Scenery {
 	}
 
 	public function update() {
-		cd.update();
+		cd.update(Game.ME.tmod);
 
 		// optim
 		if( !Game.ME.isOnScreen(x,y) ) {
@@ -114,11 +114,12 @@ class Scenery {
 			Game.ME.fx.burn(x+rnd(0,9,true), y+rnd(0,9,true));
 
 		if( cd.has("shake") ) {
-			var r = cd.get("shake") / cd.getInitialValue("shake");
+			var r = cd.getF("shake") / cd.getInitialValueF("shake");
+			// var r = cd.get("shake") / cd.getInitialValue("shake");
 			spr.x = x + Math.cos(Game.ME.ftime*1)*r*0.6;
 			spr.y = y + Math.sin(Game.ME.ftime*0.7)*r*0.6;
 		}
 		else
-			spr.setPos(x,y);
+			spr.setPosition(x,y);
 	}
 }

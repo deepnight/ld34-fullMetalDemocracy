@@ -58,8 +58,8 @@ class Quad extends Entity {
 		legsB = [new Leg(this), new Leg(this)];
 	}
 
-	override public function setPos(x, y) {
-		super.setPos(x, y);
+	override public function setPosition(x, y) {
+		super.setPosition(x, y);
 		bodyX = x;
 		bodyY = y;
 	}
@@ -101,7 +101,7 @@ class Quad extends Entity {
 			spr.y -= Math.sin(head.rotation)*recoil*2;
 			recoil*=0.7;
 
-			bodyShadow.setPos(spr.x, spr.y+10);
+			bodyShadow.setPosition(spr.x, spr.y+10);
 			bodyShadow.rotation = spr.rotation;
 		}
 	}
@@ -148,8 +148,8 @@ class Quad extends Entity {
 	override function update() {
 		super.update();
 
-		if( isActive() )
-			mt.flash.Sfx.setSpatialSettings(x,y);
+		// if( isActive() )
+			// mt.flash.Sfx.setSpatialSettings(x,y);
 
 		var spd = 0.8;
 		//var spd = id==0 ? 0.9 : 0.6;
@@ -175,7 +175,7 @@ class Quad extends Entity {
 			dy+=Math.sin(a)*spd;
 			if( mt.deepnight.Lib.distanceSqr(x,y, tx,ty)<=10*10 ) {
 				tx = ty = null;
-				cd.set("idle", rnd(60,90));
+				cd.setF("idle", rnd(60,90));
 			}
 		}
 
@@ -212,7 +212,7 @@ class Quad extends Entity {
 				switch( id ) {
 					case 0 :
 						// Gatling
-						if( !cd.hasSet("shoot",rnd(2,5)) && !target.cd.has("resist") ) {
+						if( !cd.hasSetF("shoot",rnd(2,5)) && !target.cd.has("resist") ) {
 							Assets.SBANK.shoot01().playSpatial(x,y,200,0.2);
 							var e = new en.b.MachineGun(head.x+Math.cos(a)*20 + rnd(0,5,true), head.y+Math.sin(a)*20+rnd(0,5,true), a, target);
 							Game.ME.fx.shoot(e.x, e.y, a);
@@ -221,13 +221,13 @@ class Quad extends Entity {
 
 					case 1 :
 						// Missiles
-						if( !cd.hasSet("shoot",irnd(1,2)) && missiles>0 ) {
+						if( !cd.hasSetF("shoot",irnd(1,2)) && missiles>0 ) {
 							Assets.one([
 								Assets.SBANK.missile01,
 								Assets.SBANK.missile02,
 							]).playSpatial(x,y, 200, 0.2);
 							missiles--;
-							cd.set("missileReload", secToFrames(1));
+							cd.setF("missileReload", secToFrames(1));
 							var ma = a + Math.PI*0.5*(Std.random(2)*2-1);
 							var e = new en.b.Missile(head.x + Math.cos(a)*10 + Math.cos(ma)*15, head.y + Math.sin(a)*10 + Math.sin(ma)*15, this, target);
 							Game.ME.fx.shoot(e.x, e.y, a);

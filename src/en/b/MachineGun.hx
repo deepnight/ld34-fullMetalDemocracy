@@ -26,7 +26,7 @@ class MachineGun extends en.Bullet {
 		destroy();
 		Game.ME.fx.hit(e.x+rnd(0,4,true), e.y+rnd(0,4,true));
 		e.hit(e.is(en.m.Creeper) ? 0 : 1);
-		if( !cd.hasSet("hole",4) )
+		if( !cd.hasSetF("hole",4) )
 			Game.ME.level.addBulletHole(x,y);
 	}
 

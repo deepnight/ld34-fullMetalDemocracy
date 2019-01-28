@@ -33,7 +33,7 @@ class Entity extends mt.Process {
 		spr.setCenterRatio(0.5,0.5);
 		Game.ME.scroller.add(spr, Const.DP_ENTITY);
 
-		setPos(x,y);
+		setPosition(x,y);
 	}
 
 	public function is(t:Dynamic) return Std.is(this, t);
@@ -44,13 +44,13 @@ class Entity extends mt.Process {
 
 	public function hit(dmg:Int) {
 		if( dmg<=0 ) {
-			if( !cd.has("damaged") && !cd.hasSet("resist",8) ) {
+			if( !cd.has("damaged") && !cd.hasSetF("resist",8) ) {
 				Assets.SBANK.resist01().playSpatial(x,y, 200, 0.3);
 				Game.ME.fx.resist(this);
 			}
 		}
 		else {
-			cd.set("damaged", 60);
+			cd.setF("damaged", 60);
 			life-=dmg;
 		}
 
@@ -63,7 +63,7 @@ class Entity extends mt.Process {
 	}
 
 
-	public function setPos(x,y) {
+	public function setPosition(x,y) {
 		this.x = x;
 		this.y = y;
 		//updateRender();

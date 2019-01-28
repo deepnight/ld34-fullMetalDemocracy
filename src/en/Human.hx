@@ -32,7 +32,6 @@ class Human extends Entity {
 		//spr.anim.registerStateAnim("humanWalk",1, function() return MLib.fabs(dx)>=spd*0.7 || MLib.fabs(dy)>=spd*0.7);
 		spr.anim.registerStateAnim("humanIdle",0);
 
-		spr.anim.applyStateAnims();
 		Game.ME.scroller.add(spr, Const.DP_HUMANS);
 	}
 
@@ -77,7 +76,7 @@ class Human extends Entity {
 					var d = rnd(15,25);
 					tx = x + Math.cos(a)*d;
 					ty = y + Math.sin(a)*d;
-					cd.set("panic", 30);
+					cd.setF("panic", 30);
 				}
 				else {
 					var tries = 100;
@@ -92,7 +91,7 @@ class Human extends Entity {
 				}
 
 				if( flee==null )
-					cd.set("idle", rnd(15,30));
+					cd.setF("idle", rnd(15,30));
 			}
 
 			var s = cd.has("panic") ? runSpd : spd;

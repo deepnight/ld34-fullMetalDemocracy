@@ -1,5 +1,5 @@
 class Const {
-	public static var FPS = 30;
+	public static var FPS = 45;
 	public static var SCALE = 1;
 	public static var AUTO_SCALE_TARGET_WID = -1;
 	public static var AUTO_SCALE_TARGET_HEI = 450;

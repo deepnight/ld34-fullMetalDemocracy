@@ -36,6 +36,10 @@ class Entity extends mt.Process {
 		setPosition(x,y);
 	}
 
+	inline function playSpatial(s:mt.deepnight.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
+		s.play(vol); // TODO placeholder, not supported for now
+	}
+
 	public function is(t:Dynamic) return Std.is(this, t);
 
 	function initLife(v) {
@@ -45,7 +49,7 @@ class Entity extends mt.Process {
 	public function hit(dmg:Int) {
 		if( dmg<=0 ) {
 			if( !cd.has("damaged") && !cd.hasSetF("resist",8) ) {
-				Assets.SBANK.resist01().playSpatial(x,y, 200, 0.3);
+				playSpatial( Assets.SBANK.resist01(), x,y, 200, 0.3);
 				Game.ME.fx.resist(this);
 			}
 		}

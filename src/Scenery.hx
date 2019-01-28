@@ -43,6 +43,10 @@ class Scenery {
 		return spr.groupName=="tree" || spr.groupName=="treeCreep";
 	}
 
+	inline function playSpatial(s:mt.deepnight.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
+		s.play(vol); // TODO placeholder, not supported for now
+	}
+
 	public function explode() {
 		if( solid ) {
 			shake();
@@ -54,7 +58,10 @@ class Scenery {
 		exploded = true;
 
 		if( !isTree() )
-			(Std.random(2)==0 ? Assets.SBANK.explode01() : Assets.SBANK.explode02() ).playSpatial(x,y, 200, 0.2);
+			playSpatial(
+				(Std.random(2)==0 ? Assets.SBANK.explode01() : Assets.SBANK.explode02() ),
+				x,y, 200, 0.2
+			);
 
 
 		if( !isTree() )

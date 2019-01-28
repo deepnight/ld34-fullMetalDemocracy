@@ -47,8 +47,8 @@ class Creeper extends en.Mob {
 		Game.ME.level.addDirt(x,y, "explosionDirt", 0.5);
 		Game.ME.fx.explosion(x,y, 30);
 
-		Assets.SBANK.explode04().playSpatial(x,y, 500, 1);
-		Assets.SBANK.hive01().playSpatial(x,y, 500, 0.7);
+		playSpatial( Assets.SBANK.explode04(), x,y, 500, 1 );
+		playSpatial( Assets.SBANK.hive01(), x,y, 500, 0.7 );
 
 		for(e in babies)
 			e.stun();

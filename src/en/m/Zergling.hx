@@ -55,11 +55,11 @@ class Zergling extends en.Mob {
 		}
 		Game.ME.fx.explosion(x,y, 7);
 
-		Assets.one([
+		playSpatial( Assets.one([
 			Assets.SBANK.death01,
 			Assets.SBANK.death02,
 			Assets.SBANK.death03,
-		]).playSpatial(x,y, 200, 0.7);
+		]), x,y, 200, 0.7);
 	}
 
 	override function onDispose() {

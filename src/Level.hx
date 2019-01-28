@@ -50,7 +50,7 @@ class Level extends mt.Process {
 		colMap = [];
 		for(cx in 0...wid) {
 			colMap[cx] = [];
-			for(cy in 0...wid) {
+			for(cy in 0...hei) {
 				// var p = source.getPixel(cx,cy);
 				var p = pixels.getPixel(cx,cy);
 				var k = switch( p ) {

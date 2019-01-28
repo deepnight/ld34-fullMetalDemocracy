@@ -11,24 +11,16 @@ class Main extends mt.Process {
 		hxd.Timer.wantedFPS = Const.FPS;
 
 		createRoot(Boot.ME.s2d);
-		root.setScale(Const.UPSCALE);
-		// cached = new h2d.CachedBitmap(Boot.ME.s2d, Std.int(w()/Const.UPSCALE), Std.int(h()/Const.UPSCALE));
-		// cached.scale(Const.UPSCALE);
-		// cached.blendMode = None;
-
-		Const.LWID = mt.MLib.ceil( w()/Const.UPSCALE );
-		Const.LHEI = mt.MLib.ceil( h()/Const.UPSCALE );
 
 		var music = new mt.deepnight.Sfx(hxd.Res.music);
 		music.playOnGroup(1, true, 0.7);
-		// Assets.SBANK.music().playOnGroup(1, true, 0.7);
-		// Assets.SBANK.music().playLoopOnChannel(1, 0.7);
-		//hxd.Res.music.ld34.play(true, 0.7);
+
+		onResize();
 
 		#if !debug
 		new Intro();
 		#else
-		//new Intro();
+		// new Intro();
 		new Game(1);
 		//new Outro();
 		#end
@@ -63,6 +55,14 @@ class Main extends mt.Process {
 
 	override function onResize() {
 		super.onResize();
+		// Auto scaling
+		if( Const.AUTO_SCALE_TARGET_WID>0 )
+			Const.SCALE = mt.MLib.ceil( w()/Const.AUTO_SCALE_TARGET_WID );
+		else if( Const.AUTO_SCALE_TARGET_HEI>0 )
+			Const.SCALE = mt.MLib.ceil( h()/Const.AUTO_SCALE_TARGET_HEI );
+		Const.LWID = mt.MLib.ceil( w()/Const.SCALE );
+		Const.LHEI = mt.MLib.ceil( h()/Const.SCALE );
+		root.setScale(Const.SCALE);
 	}
 
 	override function update() {

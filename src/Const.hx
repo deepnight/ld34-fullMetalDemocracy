@@ -1,6 +1,9 @@
 class Const {
 	public static var FPS = 30;
-	public static var UPSCALE = 2;
+	public static var SCALE = 1;
+	public static var AUTO_SCALE_TARGET_WID = -1;
+	public static var AUTO_SCALE_TARGET_HEI = 600;
+
 	public static var GRID = 16;
 	public static var SHORT_KEY_THRESHOLD = 5;
 	public static var LWID = 0;

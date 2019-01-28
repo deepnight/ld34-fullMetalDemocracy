@@ -6,6 +6,7 @@ class Main extends mt.Process {
 		super();
 		ME = this;
 
+		hxd.Res.initEmbed({compressSounds:true});
 		Assets.init();
 
 		createRoot(Boot.ME.s2d);
@@ -17,8 +18,8 @@ class Main extends mt.Process {
 		Const.LWID = mt.MLib.ceil( w()/Const.UPSCALE );
 		Const.LHEI = mt.MLib.ceil( h()/Const.UPSCALE );
 
-		// var music = new mt.deepnight.Sfx(hxd.Res.music);
-		// music.playOnGroup(1, true, 0.7);
+		var music = new mt.deepnight.Sfx(hxd.Res.music);
+		music.playOnGroup(1, true, 0.7);
 		// Assets.SBANK.music().playOnGroup(1, true, 0.7);
 		// Assets.SBANK.music().playLoopOnChannel(1, 0.7);
 		//hxd.Res.music.ld34.play(true, 0.7);

@@ -8,6 +8,7 @@ class Main extends mt.Process {
 
 		hxd.Res.initEmbed({compressSounds:true});
 		Assets.init();
+		hxd.Timer.wantedFPS = Const.FPS;
 
 		createRoot(Boot.ME.s2d);
 		root.setScale(Const.UPSCALE);

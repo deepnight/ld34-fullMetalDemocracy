@@ -109,14 +109,14 @@ class Entity extends mt.Process {
 				dy = 0;
 		}
 
-		x+=dx;
-		dx*=frict;
+		x+=dx*tmod;
+		dx*=Math.pow(frict,tmod);
 
-		y+=dy;
-		dy*=frict;
+		y+=dy*tmod;
+		dy*=Math.pow(frict,tmod);
 
 
-		if( MLib.fabs(dx)<=0.05 ) dx = 0;
-		if( MLib.fabs(dy)<=0.05 ) dy = 0;
+		if( MLib.fabs(dx)<=0.05*tmod ) dx = 0;
+		if( MLib.fabs(dy)<=0.05*tmod ) dy = 0;
 	}
 }

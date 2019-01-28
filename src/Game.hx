@@ -48,11 +48,11 @@ class Game extends mt.Process {
 			new en.Human((pt.cx+0.5)*Const.GRID, (pt.cy+0.5)*Const.GRID);
 		}
 
-		var s = Assets.lib.h_get("border");
-		root.add(s, Const.DP_UI);
-		s.alpha = 0.4;
-		s.scaleX = Const.LWID/s.tile.width;
-		s.scaleY = Const.LHEI/s.tile.height;
+		// var s = Assets.lib.h_get("border");
+		// root.add(s, Const.DP_UI);
+		// s.alpha = 0.4;
+		// s.scaleX = Const.LWID/s.tile.width;
+		// s.scaleY = Const.LHEI/s.tile.height;
 
 		new MiniMap();
 

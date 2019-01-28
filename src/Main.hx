@@ -13,19 +13,21 @@ class Main extends mt.Process {
 		createRoot(Boot.ME.s2d);
 		root.filter = new h2d.filter.ColorMatrix();
 
-		var music = new mt.deepnight.Sfx(hxd.Res.music);
-		music.playOnGroup(1, true, 0.7);
 
 		onResize();
 		new mt.deepnight.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
-		#if !debug
-		new Intro();
-		#else
-		// new Intro();
-		new Game(1);
-		//new Outro();
-		#end
+		delayer.addF( function() {
+			var music = new mt.deepnight.Sfx(hxd.Res.music);
+			music.playOnGroup(1, true, 0.7);
+			#if !debug
+			new Intro();
+			#else
+			// new Intro();
+			new Game(1);
+			//new Outro();
+			#end
+		}, 1);
 	}
 
 

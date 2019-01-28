@@ -31,7 +31,6 @@ class Level extends mt.Process {
 			dirtGroups.push( new h2d.TileGroup(Assets.lib.tile, root) );
 		var shadows = new h2d.TileGroup(Assets.lib.tile, root);
 		shadows.alpha = Const.SHADOW;
-		var elements = new h2d.TileGroup(Assets.lib.tile, root);
 		fronts = new h2d.TileGroup(Assets.lib.tile);
 		Game.ME.scroller.add(fronts, Const.DP_BG_FRONTS);
 
@@ -114,7 +113,6 @@ class Level extends mt.Process {
 				addColl(pt.cx, pt.cy, 2,2);
 			}
 		}
-		elements.filter = new h2d.filter.Glow(0x0,1, 1,16,2, true);
 
 		//#if !debug
 		var treeSpots = new Map();

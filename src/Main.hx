@@ -17,6 +17,7 @@ class Main extends mt.Process {
 		music.playOnGroup(1, true, 0.7);
 
 		onResize();
+		new mt.deepnight.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
 		#if !debug
 		new Intro();

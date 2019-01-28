@@ -2,7 +2,7 @@ class Const {
 	public static var FPS = 45;
 	public static var SCALE = 1;
 	public static var AUTO_SCALE_TARGET_WID = -1;
-	public static var AUTO_SCALE_TARGET_HEI = 450;
+	public static var AUTO_SCALE_TARGET_HEI = 370;
 
 	public static var GRID = 16;
 	public static var SHORT_KEY_THRESHOLD = 5;

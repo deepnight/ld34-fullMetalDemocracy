@@ -6,7 +6,7 @@ filter: Linear,Linear
 repeat: none
 arrow
   rotate: false
-  xy: 196, 619
+  xy: 182, 619
   size: 9, 5
   orig: 9, 5
   offset: 0, 0
@@ -90,21 +90,21 @@ border
   index: -1
 bulletEnemy
   rotate: false
-  xy: 413, 619
+  xy: 364, 671
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 bulletHero
   rotate: false
-  xy: 437, 709
+  xy: 450, 661
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 bulletHole0
   rotate: false
-  xy: 357, 628
+  xy: 300, 559
   size: 18, 16
   orig: 19, 17
   offset: 0, 1
@@ -118,56 +118,56 @@ bulletHole1
   index: -1
 bulletHole2
   rotate: false
-  xy: 449, 680
+  xy: 364, 639
   size: 14, 14
   orig: 15, 15
   offset: 0, 0
   index: -1
 collision
   rotate: false
-  xy: 377, 628
+  xy: 333, 658
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 concrete0
   rotate: false
-  xy: 395, 628
+  xy: 346, 639
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 concrete1
   rotate: false
-  xy: 416, 661
+  xy: 272, 559
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 concrete2
   rotate: false
-  xy: 220, 559
+  xy: 272, 577
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 concrete3
   rotate: false
-  xy: 220, 577
+  xy: 381, 686
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 concreteDetail0
   rotate: false
-  xy: 413, 631
+  xy: 351, 657
   size: 11, 10
   orig: 13, 11
   offset: 1, 1
   index: -1
 concreteDetail1
   rotate: false
-  xy: 457, 253
+  xy: 457, 269
   size: 6, 11
   orig: 7, 11
   offset: 0, 0
@@ -181,7 +181,7 @@ concreteDetail2
   index: -1
 concreteDetail3
   rotate: false
-  xy: 446, 661
+  xy: 314, 658
   size: 17, 17
   orig: 17, 17
   offset: 0, 0
@@ -209,28 +209,28 @@ creep2
   index: -1
 creeper
   rotate: false
-  xy: 306, 682
+  xy: 220, 559
   size: 50, 34
   orig: 50, 34
   offset: 0, 0
   index: -1
 creepGib0
   rotate: false
-  xy: 457, 245
+  xy: 457, 254
   size: 7, 6
   orig: 7, 6
   offset: 0, 0
   index: -1
 creepGib1
   rotate: false
-  xy: 456, 339
+  xy: 380, 521
   size: 6, 5
   orig: 6, 5
   offset: 0, 0
   index: -1
 creepGib2
   rotate: false
-  xy: 456, 321
+  xy: 456, 327
   size: 8, 6
   orig: 8, 6
   offset: 0, 0
@@ -244,14 +244,14 @@ creepPop
   index: -1
 creepSplatter0
   rotate: false
-  xy: 254, 682
+  xy: 297, 681
   size: 50, 34
   orig: 50, 36
   offset: 0, 1
   index: -1
 dhouse2x2_0
   rotate: false
-  xy: 432, 346
+  xy: 432, 345
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -265,7 +265,7 @@ dhouse2x2_1
   index: -1
 dhouse2x2_2
   rotate: false
-  xy: 432, 380
+  xy: 432, 379
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -279,28 +279,28 @@ dhouse2x2_3
   index: -1
 dhouse2x2_4
   rotate: false
-  xy: 432, 414
+  xy: 432, 413
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 dropShadow
   rotate: false
-  xy: 178, 619
+  xy: 164, 619
   size: 16, 6
   orig: 16, 6
   offset: 0, 0
   index: -1
 enemy
   rotate: false
-  xy: 238, 559
+  xy: 381, 704
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 explosion
   rotate: false
-  xy: 164, 628
+  xy: 164, 627
   size: 52, 52
   orig: 52, 52
   offset: 0, 0
@@ -321,14 +321,14 @@ eye
   index: -1
 foot0
   rotate: false
-  xy: 426, 628
+  xy: 314, 625
   size: 30, 31
   orig: 30, 31
   offset: 0, 0
   index: -1
 foot1
   rotate: false
-  xy: 392, 679
+  xy: 349, 686
   size: 30, 31
   orig: 30, 31
   offset: 0, 0
@@ -356,28 +356,28 @@ grass2
   index: -1
 grassDetail0
   rotate: false
-  xy: 424, 709
+  xy: 351, 669
   size: 11, 10
   orig: 14, 13
   offset: 1, 2
   index: -1
 grassDetail1
   rotate: false
-  xy: 457, 266
+  xy: 457, 282
   size: 6, 11
   orig: 14, 13
   offset: 5, 2
   index: -1
 grassDetail2
   rotate: false
-  xy: 194, 604
+  xy: 213, 604
   size: 11, 13
   orig: 14, 14
   offset: 1, 0
   index: -1
 grassDetail3
   rotate: false
-  xy: 294, 605
+  xy: 260, 605
   size: 18, 18
   orig: 18, 18
   offset: 0, 0
@@ -398,63 +398,70 @@ head1
   index: -1
 headGlow0
   rotate: false
-  xy: 164, 682
+  xy: 207, 681
   size: 43, 37
   orig: 43, 37
   offset: 0, 0
   index: -1
 headGlow1
   rotate: false
-  xy: 209, 682
+  xy: 252, 681
   size: 43, 37
   orig: 43, 37
   offset: 0, 0
   index: -1
+heart
+  rotate: false
+  xy: 457, 245
+  size: 7, 7
+  orig: 7, 7
+  offset: 0, 0
+  index: -1
 hole0
   rotate: false
-  xy: 431, 448
+  xy: 431, 447
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 hole1
   rotate: false
-  xy: 382, 646
+  xy: 380, 653
   size: 32, 31
   orig: 32, 32
   offset: 0, 0
   index: -1
 house2x2_0
   rotate: false
-  xy: 425, 560
+  xy: 425, 559
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house2x2_1
   rotate: false
-  xy: 425, 594
+  xy: 425, 593
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house2x2_2
   rotate: false
-  xy: 314, 646
+  xy: 346, 605
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house2x2_3
   rotate: false
-  xy: 348, 646
+  xy: 380, 619
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 house2x2_4
   rotate: false
-  xy: 358, 680
+  xy: 425, 627
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
@@ -468,70 +475,70 @@ humanIdle0
   index: -1
 humanRun0
   rotate: false
-  xy: 456, 311
+  xy: 456, 317
   size: 8, 8
   orig: 8, 8
   offset: 0, 0
   index: -1
 humanRun1
   rotate: false
-  xy: 456, 289
+  xy: 456, 295
   size: 8, 9
   orig: 8, 9
   offset: 0, 0
   index: -1
 humanRun2
   rotate: false
-  xy: 456, 300
+  xy: 456, 306
   size: 8, 9
   orig: 8, 9
   offset: 0, 0
   index: -1
 humanWalk0
   rotate: false
-  xy: 457, 279
+  xy: 456, 335
   size: 6, 8
   orig: 6, 8
   offset: 0, 0
   index: -1
 humanWalk1
   rotate: false
-  xy: 456, 329
+  xy: 380, 511
   size: 6, 8
   orig: 6, 8
   offset: 0, 0
   index: -1
 joint
   rotate: false
-  xy: 207, 605
+  xy: 194, 605
   size: 17, 19
   orig: 18, 19
   offset: 1, 0
   index: -1
 leaves0
   rotate: false
-  xy: 446, 696
+  xy: 450, 673
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 leaves1
   rotate: false
-  xy: 449, 708
+  xy: 435, 679
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 leaves2
   rotate: false
-  xy: 306, 559
+  xy: 447, 685
   size: 10, 10
   orig: 10, 10
   offset: 0, 0
   index: -1
 leaves3
   rotate: false
-  xy: 266, 617
+  xy: 231, 617
   size: 10, 8
   orig: 10, 10
   offset: 0, 1
@@ -552,7 +559,7 @@ legBox
   index: -1
 legShadow
   rotate: false
-  xy: 260, 605
+  xy: 312, 613
   size: 32, 10
   orig: 32, 10
   offset: 0, 0
@@ -601,91 +608,98 @@ logo
   index: -1
 missile
   rotate: false
-  xy: 164, 619
+  xy: 243, 617
   size: 12, 7
   orig: 12, 7
   offset: 0, 0
   index: -1
 missileSmoke
   rotate: false
-  xy: 226, 619
+  xy: 213, 619
   size: 16, 5
   orig: 16, 7
   offset: 0, 1
   index: -1
 notifBg
   rotate: false
-  xy: 434, 661
+  xy: 300, 577
   size: 10, 46
   orig: 10, 46
   offset: 0, 0
   index: -1
+pixel
+  rotate: false
+  xy: 463, 187
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
 plank0
   rotate: false
-  xy: 306, 571
+  xy: 312, 577
   size: 9, 10
   orig: 9, 10
   offset: 0, 0
   index: -1
 plank1
   rotate: false
-  xy: 292, 575
+  xy: 312, 589
   size: 9, 10
   orig: 9, 10
   offset: 0, 0
   index: -1
 plank2
   rotate: false
-  xy: 292, 587
+  xy: 312, 601
   size: 9, 10
   orig: 9, 10
   offset: 0, 0
   index: -1
 redGlow
   rotate: false
-  xy: 427, 482
+  xy: 427, 481
   size: 36, 36
   orig: 36, 36
   offset: 0, 0
   index: -1
 resist
   rotate: false
-  xy: 292, 559
+  xy: 364, 655
   size: 12, 14
   orig: 12, 14
   offset: 0, 0
   index: -1
 roadC0
   rotate: false
-  xy: 238, 577
+  xy: 399, 686
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 roadH0
   rotate: false
-  xy: 256, 559
+  xy: 399, 704
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 roadH1
   rotate: false
-  xy: 256, 577
+  xy: 414, 661
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 roadV0
   rotate: false
-  xy: 274, 559
+  xy: 432, 661
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 roadV1
   rotate: false
-  xy: 274, 577
+  xy: 417, 679
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
@@ -699,21 +713,21 @@ shadow2x2
   index: -1
 smokeCircle
   rotate: false
-  xy: 314, 605
+  xy: 164, 681
   size: 41, 39
   orig: 41, 39
   offset: 0, 0
   index: -1
 spark0
   rotate: false
-  xy: 244, 617
+  xy: 414, 619
   size: 9, 9
   orig: 9, 9
   offset: 0, 0
   index: -1
 spark1
   rotate: false
-  xy: 255, 617
+  xy: 414, 630
   size: 9, 9
   orig: 9, 9
   offset: 0, 0
@@ -727,24 +741,31 @@ tree0
   index: -1
 tree1
   rotate: false
-  xy: 218, 628
+  xy: 218, 627
   size: 46, 52
   orig: 54, 58
   offset: 6, 0
   index: -1
 treeCreep0
   rotate: false
-  xy: 427, 520
+  xy: 427, 519
   size: 34, 38
   orig: 40, 43
   offset: 6, 0
   index: -1
 treeCreep1
   rotate: false
-  xy: 266, 628
+  xy: 266, 627
   size: 46, 52
   orig: 54, 58
   offset: 6, 0
+  index: -1
+triangle
+  rotate: false
+  xy: 457, 262
+  size: 7, 5
+  orig: 7, 5
+  offset: 0, 0
   index: -1
 whiteSmoke
   rotate: false
@@ -762,7 +783,7 @@ zergling0
   index: -1
 zergling1
   rotate: false
-  xy: 358, 605
+  xy: 280, 605
   size: 18, 18
   orig: 19, 18
   offset: 0, 0

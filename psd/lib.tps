@@ -660,6 +660,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">export/heart.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,3,3</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,3,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">export/humanIdle0.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -859,6 +872,19 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">export/pixel.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>0,0,1,1</rect>
+                <key>scale9Paddings</key>
+                <rect>0,0,1,1</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">export/plank0.png</key>
             <key type="filename">export/plank1.png</key>
             <key type="filename">export/plank2.png</key>
@@ -939,6 +965,19 @@
                 <rect>14,15,27,29</rect>
                 <key>scale9Paddings</key>
                 <rect>14,15,27,29</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">export/triangle.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>1,1,3,2</rect>
+                <key>scale9Paddings</key>
+                <rect>1,1,3,2</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

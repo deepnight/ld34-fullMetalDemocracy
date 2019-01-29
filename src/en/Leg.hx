@@ -88,7 +88,6 @@ class Leg extends Entity {
 
 			bodyBox.setPosition(bx,by);
 			bodyBox.rotation = a;
-			//bodyBox.setScale(1+z*0.5);
 			bodyBox.scaleX = mt.deepnight.Lib.distance(bx,by, x,y)*0.4 / bodyBox.tile.width;
 
 			spr.setScale(1+z*0.4);
@@ -102,7 +101,7 @@ class Leg extends Entity {
 
 	public function inBadPosition() {
 		var d = mt.deepnight.Lib.distanceSqr(x, y, quad.x, quad.y);
-		return d<=30*30 || d>=50*50;
+		return d<=40*40 || d>=45*45;
 	}
 
 	override function update() {
@@ -110,11 +109,11 @@ class Leg extends Entity {
 
 		if( MLib.fabs(x-tx)<=5 && MLib.fabs(y-ty)<=5 ) {
 			if( dx!=0 || dy!=0 ) {
-				// mt.flash.Sfx.playOne([
-				// 	Assets.SBANK.step01,
-				// 	Assets.SBANK.step02,
-				// 	Assets.SBANK.step03,
-				// ], 0.2*quad.vol); // TODO
+				Assets.one([
+					Assets.SBANK.step01,
+					Assets.SBANK.step02,
+					Assets.SBANK.step03,
+				], 0.35*quad.vol);
 				var s = Assets.lib.h_get("smokeCircle",0.5,0.5);
 				Game.ME.scroller.add(s, Const.DP_BG);
 				s.setPosition(x,y);
@@ -136,18 +135,23 @@ class Leg extends Entity {
 			ty = y;
 			dx = dy = 0;
 			z*=0.7;
+			Game.ME.scroller.add(spr, Const.DP_BG);
 		}
 		else {
-			var spd = 5.2;
+			if( z>=1 )
+				Game.ME.scroller.add(spr, Const.DP_FEET);
+			else
+				Game.ME.scroller.add(spr, Const.DP_BG);
+			var spd = 8.2;
 			//var spd = quad.id==0 ? 5.5 : 3.6;
 			var a = Math.atan2(ty-y, tx-x);
-			dx+=Math.cos(a)*spd;
-			dy+=Math.sin(a)*spd;
+			dx+=Math.cos(a)*spd*tmod;
+			dy+=Math.sin(a)*spd*tmod;
 			quad.cd.setF("legMoving", 4);
 			//quad.cd.setF("legMoving", quad.id==0 ? 4 : 6);
-			quad.z+=0.1;
+			quad.z+=0.1*tmod;
 			if( z<=1 )
-				z+=0.2;
+				z+=0.2*tmod;
 		}
 
 		if( itime%15==0 )

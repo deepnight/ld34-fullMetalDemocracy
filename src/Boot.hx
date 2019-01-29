@@ -27,7 +27,13 @@ class Boot extends hxd.App {
 
 	override function update(dt:Float) {
 		super.update(dt);
-		mt.Process.updateAll(hxd.Timer.tmod);
+
+		#if debug
+		var mul = hxd.Key.isDown(hxd.Key.NUMPAD_SUB) ? 0.2 : 1.0;
+		#else
+		var mul = 1.0;
+		#end
+		mt.Process.updateAll(hxd.Timer.tmod * mul);
 	}
 }
 

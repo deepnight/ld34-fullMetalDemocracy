@@ -20,7 +20,7 @@ class Assets {
 		lib.defineAnim("humanRun", "0(3), 1(1), 2(3), 1(1)");
 	}
 
-	public static inline function one(arr:Array<?Float->mt.deepnight.Sfx>) : mt.deepnight.Sfx {
-		return arr[Std.random(arr.length)]();
+	public static inline function one(arr:Array<?Float->mt.deepnight.Sfx>, ?vol=1.0) : mt.deepnight.Sfx {
+		return arr[Std.random(arr.length)](vol);
 	}
 }

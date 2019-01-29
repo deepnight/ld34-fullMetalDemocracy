@@ -149,19 +149,18 @@ class Quad extends Entity {
 		super.update();
 
 		// if( isActive() )
-			// mt.flash.Sfx.setSpatialSettings(x,y);
+			// mt.flash.Sfx.setSpatialSettings(x,y); // TODO unsupported
 
-		var spd = 0.8;
-		//var spd = id==0 ? 0.9 : 0.6;
+		var spd = 1.1;
 		#if debug
 		if( Key.isDown(Key.SHIFT) ) spd = 4;
 		#end
 
 		if( isActive() ) {
-			if( Key.isDown(Key.LEFT) ) dx-=spd;
-			if( Key.isDown(Key.RIGHT) ) dx+=spd;
-			if( Key.isDown(Key.UP) ) dy-=spd;
-			if( Key.isDown(Key.DOWN) ) dy+=spd;
+			if( Key.isDown(Key.LEFT) ) dx-=spd*tmod;
+			if( Key.isDown(Key.RIGHT) ) dx+=spd*tmod;
+			if( Key.isDown(Key.UP) ) dy-=spd*tmod;
+			if( Key.isDown(Key.DOWN) ) dy+=spd*tmod;
 			if( Key.isPressed(Key.SPACE) )
 				Game.ME.switchCurrent();
 		}
@@ -171,8 +170,8 @@ class Quad extends Entity {
 		}
 		else {
 			var a = Math.atan2(ty-y, tx-x);
-			dx+=Math.cos(a)*spd;
-			dy+=Math.sin(a)*spd;
+			dx+=Math.cos(a)*spd*tmod;
+			dy+=Math.sin(a)*spd*tmod;
 			if( mt.deepnight.Lib.distanceSqr(x,y, tx,ty)<=10*10 ) {
 				tx = ty = null;
 				cd.setF("idle", rnd(60,90));
@@ -187,16 +186,16 @@ class Quad extends Entity {
 				var d = MLib.dist2(e.x-x, e.y-y);
 				if( d<=60 ) {
 					var r = 0.3;
-					dx+=-Math.cos(a)*r;
-					dy+=-Math.sin(a)*r;
-					e.dx+=Math.cos(a)*r;
-					e.dy+=Math.sin(a)*r;
+					dx+=-Math.cos(a)*r*tmod;
+					dy+=-Math.sin(a)*r*tmod;
+					e.dx+=Math.cos(a)*r*tmod;
+					e.dy+=Math.sin(a)*r*tmod;
 				}
 			}
 
 		var m = 40;
 		if( x<m ) {
-			dx+=spd*1.5;
+			dx+=spd*1.5*tmod;
 		}
 
 
@@ -246,8 +245,8 @@ class Quad extends Entity {
 		var a = Math.atan2(dy,dx);
 		var offX = Math.cos(a)*10;
 		var offY = Math.sin(a)*10;
-		if( MLib.fabs(dx)<=0.01 ) dx = 0;
-		if( MLib.fabs(dy)<=0.01 ) dy = 0;
+		if( MLib.fabs(dx)<=0.01*tmod ) dx = 0;
+		if( MLib.fabs(dy)<=0.01*tmod ) dy = 0;
 		if( dx==0 && dy==0 )
 			offX = offY = 0;
 
@@ -271,13 +270,6 @@ class Quad extends Entity {
 		bodyY = y + ( ( legsA[0].y + legsA[1].y + legsB[0].y + legsB[1].y ) / 4 - y ) * 0.5 - recoil*1;
 
 		if( MLib.fabs(dx)>=0.1 || MLib.fabs(dy)>=0.1 )
-			bodyAng += mt.deepnight.Lib.angularSubstractionRad(Math.atan2(dy,dx), bodyAng) * 0.03;
-
-		// Scenery destructions
-		//for(e in Scenery.ALL)
-			//if( e.isColliding(this) )
-				//e.explode();
-
-		//Game.ME.level.addBulletHole(x-Math.cos(bodyAng)*30,y-Math.sin(bodyAng)*30);
+			bodyAng += mt.deepnight.Lib.angularSubstractionRad(Math.atan2(dy,dx), bodyAng) * 0.03*tmod;
 	}
 }

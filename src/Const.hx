@@ -1,5 +1,5 @@
 class Const {
-	public static var FPS = 35;
+	public static var FPS = 45;
 	public static var SCALE = 1;
 	public static var AUTO_SCALE_TARGET_WID = -1;
 	public static var AUTO_SCALE_TARGET_HEI = 370;
@@ -9,7 +9,7 @@ class Const {
 	public static var LWID = 0;
 	public static var LHEI = 0;
 	public static var SHADOW = 0.6;
-	public static var SHOOT_RANGE = 165;
+	public static var SHOOT_RANGE = 200;
 
 	static var uniq = 0;
 	public static var DP_BG = uniq++;
@@ -18,6 +18,7 @@ class Const {
 	public static var DP_BG_FRONTS = uniq++;
 	public static var DP_ARMS = uniq++;
 	public static var DP_BODY = uniq++;
+	public static var DP_FEET = uniq++;
 	public static var DP_MOB_SHADOWS = uniq++;
 	public static var DP_FLYERS = uniq++;
 	public static var DP_FX = uniq++;

@@ -54,7 +54,7 @@ class Entity extends mt.Process {
 			}
 		}
 		else {
-			cd.setF("damaged", 60);
+			cd.setF("damaged", 5);
 			life-=dmg;
 		}
 

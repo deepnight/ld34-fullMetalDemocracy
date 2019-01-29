@@ -65,7 +65,6 @@ class MiniMap extends mt.Process {
 	}
 
 	inline function dot(x:Float, y:Float, c:UInt) {
-		// (b==null?bd:b).setPixel( Std.int(x*scale), Std.int(y*scale), addAlpha(c) );
 		tg.addColor(
 			Std.int(x*scale), Std.int(y*scale),
 			Color.getR(c), Color.getG(c), Color.getB(c), 1.0,
@@ -74,7 +73,6 @@ class MiniMap extends mt.Process {
 	}
 
 	inline function dotCase(cx:Int, cy:Int, col:UInt) {
-		// (b==null?bd:b).setPixel( Std.int(cx*Const.GRID*scale), Std.int(cy*Const.GRID*scale), addAlpha(c) );
 		tg.addColor(
 			Std.int(cx*Const.GRID*scale), Std.int(cy*Const.GRID*scale),
 			Color.getR(col), Color.getG(col), Color.getB(col), 1.0,
@@ -98,7 +96,6 @@ class MiniMap extends mt.Process {
 			blink = !blink;
 			var ccount = 0;
 			tg.clear();
-		// 	bd.draw(0,0, bdBase, 0,0, bd.width, bd.height);
 
 			for(pt in level.getSpots("road"))
 				dotCase(pt.cx, pt.cy, 0x7E705A);
@@ -120,7 +117,6 @@ class MiniMap extends mt.Process {
 			for(e in en.Mob.ALL)
 				if( Std.is(e,en.m.Creeper) )
 					icon(e.x, e.y, 0xff0000, Assets.lib.getTile("triangle"));
-					// dot(e.x, e.y, 0xFF0000 );
 
 			for(e in en.Quad.ALL)
 				icon(e.x, e.y, blink && Game.ME.current==e ? 0xffffff : e.id==0?0xe1bf15:0xd327d2, Assets.lib.getTile("heart"));

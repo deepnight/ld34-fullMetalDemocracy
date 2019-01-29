@@ -212,7 +212,8 @@ class Quad extends Entity {
 					case 0 :
 						// Gatling
 						if( !cd.hasSetF("shoot",rnd(2,5)) && !target.cd.has("resist") ) {
-							playSpatial( Assets.SBANK.shoot01(), x,y,200,0.2 );
+							if( !cd.hasSetS("sfxMG", 0.1) )
+								playSpatial( Assets.SBANK.shoot01(), x,y,200,0.2 );
 							var e = new en.b.MachineGun(head.x+Math.cos(a)*20 + rnd(0,5,true), head.y+Math.sin(a)*20+rnd(0,5,true), a, target);
 							Game.ME.fx.shoot(e.x, e.y, a);
 							recoil = 1;
@@ -221,10 +222,11 @@ class Quad extends Entity {
 					case 1 :
 						// Missiles
 						if( !cd.hasSetF("shoot",irnd(1,2)) && missiles>0 ) {
-							playSpatial(
-								Assets.one([Assets.SBANK.missile01,Assets.SBANK.missile02]),
-								x,y, 200, 0.2
-							);
+							if( !cd.hasSetS("sfxMiss", 0.1) )
+								playSpatial(
+									Assets.one([Assets.SBANK.missile01,Assets.SBANK.missile02]),
+									x,y, 200, 0.2
+								);
 							missiles--;
 							cd.setF("missileReload", secToFrames(1));
 							var ma = a + Math.PI*0.5*(Std.random(2)*2-1);

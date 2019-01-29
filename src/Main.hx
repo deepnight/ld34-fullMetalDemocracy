@@ -6,7 +6,7 @@ class Main extends mt.Process {
 		super();
 		ME = this;
 
-		hxd.Res.initEmbed({compressSounds:true});
+		hxd.Res.initEmbed();
 		Assets.init();
 		hxd.Timer.wantedFPS = Const.FPS;
 
@@ -18,7 +18,12 @@ class Main extends mt.Process {
 		new mt.deepnight.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
 		delayer.addF( function() {
+			#if js
+			var music = new mt.deepnight.Sfx(hxd.Res.music_js);
+			#else
 			var music = new mt.deepnight.Sfx(hxd.Res.music);
+			#end
+			// var music = new mt.deepnight.Sfx(hxd.Res.music);
 			music.playOnGroup(1, true, 0.7);
 			#if !debug
 			new Intro();

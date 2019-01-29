@@ -50,7 +50,7 @@ class Missile extends en.Bullet {
 			return;
 
 		destroy();
-		e.hit(8);
+		e.hit(9);
 		Game.ME.fx.explosion(e.x+rnd(0,7,true), e.y+rnd(0,7,true), 1);
 		playSpatial( Assets.one([Assets.SBANK.explode03]), x,y, 200, 0.2 );
 	}

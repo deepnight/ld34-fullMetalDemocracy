@@ -27,7 +27,7 @@ class MachineGun extends en.Bullet {
 		Game.ME.fx.hit(e.x+rnd(0,4,true), e.y+rnd(0,4,true));
 		if( e.is(en.m.Creeper) )
 			if( Std.random(3)==0 )
-				e.hit(1);
+				e.hit(3);
 			else
 				e.hit(0);
 		else

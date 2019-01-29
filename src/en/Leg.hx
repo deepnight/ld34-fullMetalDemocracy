@@ -109,11 +109,11 @@ class Leg extends Entity {
 
 		if( MLib.fabs(x-tx)<=5 && MLib.fabs(y-ty)<=5 ) {
 			if( dx!=0 || dy!=0 ) {
-				Assets.one([
-					Assets.SBANK.step01,
-					Assets.SBANK.step02,
-					Assets.SBANK.step03,
-				], 0.35*quad.vol);
+				// Assets.one([
+				// 	Assets.SBANK.step01,
+				// 	Assets.SBANK.step02,
+				// 	Assets.SBANK.step03,
+				// ], 0.35*quad.vol);
 				var s = Assets.lib.h_get("smokeCircle",0.5,0.5);
 				Game.ME.scroller.add(s, Const.DP_BG);
 				s.setPosition(x,y);

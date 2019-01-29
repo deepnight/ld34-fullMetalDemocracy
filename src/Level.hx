@@ -96,9 +96,9 @@ class Level extends mt.Process {
 						roads.add(x, y, Assets.lib.getTileRandom("roadC"));
 				}
 				else {
-					ground.add(x-1,y-1, Assets.lib.getTileRandom("concrete"));
+					ground.add(x-1,y-1, Assets.lib.getTileRandom("grass"));
 					if( Std.random(100)<25 )
-						ground.add(x-1,y-1, Assets.lib.getTileRandom("concreteDetail"));
+						ground.add(x-1,y-1, Assets.lib.getTileRandom("grassDetail"));
 				}
 
 			}

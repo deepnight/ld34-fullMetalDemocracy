@@ -6,7 +6,7 @@ class Main extends mt.Process {
 		super();
 		ME = this;
 
-		hxd.Res.initEmbed();
+		hxd.Res.initEmbed({ compressSounds:true });
 		Assets.init();
 		hxd.Timer.wantedFPS = Const.FPS;
 

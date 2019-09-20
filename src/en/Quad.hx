@@ -1,9 +1,5 @@
 package en;
 
-import mt.MLib;
-import hxd.Key;
-import mt.heaps.slib.HSprite;
-
 class Quad extends Entity {
 	public static var ALL : Array<Quad> = [];
 
@@ -33,7 +29,7 @@ class Quad extends Entity {
 		super(x,y);
 		ALL.push(this);
 		this.id = id;
-		skin = MLib.min(1,sk);
+		skin = M.imin(1,sk);
 		frict = 0.6;
 		bodyAng = 0;
 		tx = ty = null;
@@ -93,7 +89,7 @@ class Quad extends Entity {
 			else
 				head.set("head", skin);
 			if( target==null )
-				head.rotation += mt.deepnight.Lib.angularSubstractionRad(spr.rotation, head.rotation) * 0.1;
+				head.rotation += M.radSubstract(spr.rotation, head.rotation) * 0.1;
 
 			head.x -= Math.cos(head.rotation)*recoil*4;
 			head.y -= Math.sin(head.rotation)*recoil*4;
@@ -172,7 +168,7 @@ class Quad extends Entity {
 			var a = Math.atan2(ty-y, tx-x);
 			dx+=Math.cos(a)*spd*tmod;
 			dy+=Math.sin(a)*spd*tmod;
-			if( mt.deepnight.Lib.distanceSqr(x,y, tx,ty)<=10*10 ) {
+			if( dn.Lib.distanceSqr(x,y, tx,ty)<=10*10 ) {
 				tx = ty = null;
 				cd.setF("idle", rnd(60,90));
 			}
@@ -183,7 +179,7 @@ class Quad extends Entity {
 		for(e in ALL)
 			if( e!=this && !e.destroyed ) {
 				var a = Math.atan2(e.y-y, e.x-x);
-				var d = MLib.dist2(e.x-x, e.y-y);
+				var d = M.dist2(e.x-x, e.y-y);
 				if( d<=60 ) {
 					var r = 0.3;
 					dx+=-Math.cos(a)*r*tmod;
@@ -203,9 +199,9 @@ class Quad extends Entity {
 		target = getAttackTarget();
 		if( target!=null ) {
 			var a = Math.atan2(target.y-head.y, target.x-head.x);
-			var d = mt.deepnight.Lib.angularSubstractionRad(a, head.rotation);
+			var d = M.radSubstract(a, head.rotation);
 			head.rotation += id==0 ? d*0.30 : d*0.08;
-			if( MLib.fabs(d)<=0.15 ) {
+			if( M.fabs(d)<=0.15 ) {
 				head.rotation = a;
 
 				switch( id ) {
@@ -247,21 +243,21 @@ class Quad extends Entity {
 		var a = Math.atan2(dy,dx);
 		var offX = Math.cos(a)*10;
 		var offY = Math.sin(a)*10;
-		if( MLib.fabs(dx)<=0.01*tmod ) dx = 0;
-		if( MLib.fabs(dy)<=0.01*tmod ) dy = 0;
+		if( M.fabs(dx)<=0.01*tmod ) dx = 0;
+		if( M.fabs(dy)<=0.01*tmod ) dy = 0;
 		if( dx==0 && dy==0 )
 			offX = offY = 0;
 
 		if( !cd.has("legMoving") ) {
 			var d = 50;
 			if( moveA && ( legsA[0].inBadPosition() || legsA[1].inBadPosition() ) ) {
-				legsA[0].setAngPos(bodyAng-MLib.PI*0.75, d);
-				legsA[1].setAngPos(bodyAng+MLib.PI*0.25, d);
+				legsA[0].setAngPos(bodyAng-M.PI*0.75, d);
+				legsA[1].setAngPos(bodyAng+M.PI*0.25, d);
 				moveA = !moveA;
 			}
 			else if( !moveA && ( legsB[0].inBadPosition() || legsB[1].inBadPosition() ) ) {
-				legsB[0].setAngPos(bodyAng-MLib.PI*0.25, d);
-				legsB[1].setAngPos(bodyAng+MLib.PI*0.75, d);
+				legsB[0].setAngPos(bodyAng-M.PI*0.25, d);
+				legsB[1].setAngPos(bodyAng+M.PI*0.75, d);
 				moveA = !moveA;
 			}
 		}
@@ -271,7 +267,7 @@ class Quad extends Entity {
 		bodyX = x + ( ( legsA[0].x + legsA[1].x + legsB[0].x + legsB[1].x ) / 4 - x ) * 0.5;
 		bodyY = y + ( ( legsA[0].y + legsA[1].y + legsB[0].y + legsB[1].y ) / 4 - y ) * 0.5 - recoil*1;
 
-		if( MLib.fabs(dx)>=0.1 || MLib.fabs(dy)>=0.1 )
-			bodyAng += mt.deepnight.Lib.angularSubstractionRad(Math.atan2(dy,dx), bodyAng) * 0.03*tmod;
+		if( M.fabs(dx)>=0.1 || M.fabs(dy)>=0.1 )
+			bodyAng += M.radSubstract(Math.atan2(dy,dx), bodyAng) * 0.03*tmod;
 	}
 }

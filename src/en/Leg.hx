@@ -1,7 +1,5 @@
 package en;
 
-import mt.MLib;
-
 class Leg extends Entity {
 	public static var ALL : Array<Leg> = [];
 
@@ -10,10 +8,10 @@ class Leg extends Entity {
 	public var tx		: Float;
 	public var ty		: Float;
 	public var z		: Float;
-	var arm				: mt.heaps.slib.HSprite;
-	var footBox			: mt.heaps.slib.HSprite;
-	var bodyBox			: mt.heaps.slib.HSprite;
-	var legShadow		: mt.heaps.slib.HSprite;
+	var arm				: HSprite;
+	var footBox			: HSprite;
+	var bodyBox			: HSprite;
+	var legShadow		: HSprite;
 
 	public function new(q) {
 		super(0,0);
@@ -79,16 +77,16 @@ class Leg extends Entity {
 			var bx = quad.bodyX + Math.cos(a)*r;
 			var by = quad.bodyY + Math.sin(a)*r;
 			arm.setPosition(x + (bx-x)*0.5, y + (by-y)*0.5);
-			arm.scaleX = mt.deepnight.Lib.distance(bx,by, x,y) / arm.tile.width;
+			arm.scaleX = dn.Lib.distance(bx,by, x,y) / arm.tile.width;
 			arm.rotation = a;
 
 			footBox.setPosition(x-Math.cos(a)*5,y-Math.sin(a)*5);
-			footBox.rotation = a+MLib.PI;
+			footBox.rotation = a+M.PI;
 			footBox.setScale(1+z*0.7);
 
 			bodyBox.setPosition(bx,by);
 			bodyBox.rotation = a;
-			bodyBox.scaleX = mt.deepnight.Lib.distance(bx,by, x,y)*0.4 / bodyBox.tile.width;
+			bodyBox.scaleX = dn.Lib.distance(bx,by, x,y)*0.4 / bodyBox.tile.width;
 
 			spr.setScale(1+z*0.4);
 			spr.y+=5;
@@ -100,14 +98,14 @@ class Leg extends Entity {
 	}
 
 	public function inBadPosition() {
-		var d = mt.deepnight.Lib.distanceSqr(x, y, quad.x, quad.y);
+		var d = dn.Lib.distanceSqr(x, y, quad.x, quad.y);
 		return d<=40*40 || d>=45*45;
 	}
 
 	override function update() {
 		super.update();
 
-		if( MLib.fabs(x-tx)<=5 && MLib.fabs(y-ty)<=5 ) {
+		if( M.fabs(x-tx)<=5 && M.fabs(y-ty)<=5 ) {
 			if( dx!=0 || dy!=0 ) {
 				// Assets.one([
 				// 	Assets.SBANK.step01,

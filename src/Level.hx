@@ -1,6 +1,4 @@
-import mt.MLib;
-
-class Level extends mt.Process {
+class Level extends dn.Process {
 	public var wid			: Int;
 	public var hei			: Int;
 	var spots				: Map<String,Array<{cx:Int, cy:Int}>>;
@@ -102,9 +100,9 @@ class Level extends mt.Process {
 				}
 
 			}
-		// ground.filter = new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1);
-		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x474A1C,1) );
-		// ground.filters.push( new h2d.filter.DropShadow(0.5,MLib.PI*0.5, 0x996D51,1) );
+		// ground.filter = new h2d.filter.DropShadow(0.5,M.PI*0.5, 0x474A1C,1);
+		// ground.filters.push( new h2d.filter.DropShadow(0.5,M.PI*0.5, 0x474A1C,1) );
+		// ground.filters.push( new h2d.filter.DropShadow(0.5,M.PI*0.5, 0x996D51,1) );
 
 		for(pt in spots.get("house")) {
 			if( !hasSpot("house", pt.cx, pt.cy-1) && !hasSpot("house", pt.cx-1, pt.cy) ) {
@@ -166,7 +164,7 @@ class Level extends mt.Process {
 	public function addCreepArea(cx,cy,r) {
 		for(x in cx-r...cx+r+1)
 			for(y in cy-r...cy+r+1)
-				if( mt.deepnight.Lib.distanceSqr(cx,cy,x,y)<=r*r )
+				if( dn.Lib.distanceSqr(cx,cy,x,y)<=r*r )
 					addCreep(x,y, x==cx && y==cy);
 	}
 

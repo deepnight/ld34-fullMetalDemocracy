@@ -1,11 +1,7 @@
-import mt.heaps.slib.*;
-import mt.MLib;
-import mt.deepnight.Lib;
-
 class Scenery {
 	public static var ALL : Array<Scenery> = [];
 
-	var cd				: mt.Cooldown;
+	var cd				: dn.Cooldown;
 	public var spr		: HSprite;
 	var exploded		: Bool;
 	public var x		: Float;
@@ -18,7 +14,7 @@ class Scenery {
 	public var creeped = false;
 
 	public function new(k:String, front:Bool, x:Float,y:Float) {
-		cd = new mt.Cooldown(Const.FPS);
+		cd = new dn.Cooldown(Const.FPS);
 		ALL.push(this);
 		exploded = false;
 		partId = "plank";
@@ -36,14 +32,14 @@ class Scenery {
 	inline function irnd(min,max,?sign) return Lib.irnd(min,max,sign);
 
 	public inline function isColliding(e:Entity) {
-		return !exploded && mt.deepnight.Lib.distanceSqr(Std.int(x), Std.int(y), e.x, e.y) <= 30*30;
+		return !exploded && dn.Lib.distanceSqr(Std.int(x), Std.int(y), e.x, e.y) <= 30*30;
 	}
 
 	public function isTree() {
 		return spr.groupName=="tree" || spr.groupName=="treeCreep";
 	}
 
-	inline function playSpatial(s:mt.deepnight.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
+	inline function playSpatial(s:dn.heaps.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
 		s.play(vol); // TODO placeholder, not supported for now
 	}
 

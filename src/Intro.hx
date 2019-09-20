@@ -1,6 +1,6 @@
-import mt.deepnight.Tweenie;
+import dn.Tweenie;
 
-class Intro extends mt.Process {
+class Intro extends dn.Process {
 	public function new() {
 		super(Main.ME);
 

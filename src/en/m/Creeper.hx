@@ -3,7 +3,7 @@ package en.m;
 class Creeper extends en.Mob {
 	public static var ALL : Array<en.Mob> = [];
 
-	var eye				: mt.heaps.slib.HSprite;
+	var eye				: HSprite;
 	var babies			: Array<en.m.Zergling>;
 
 	//var ex				: Float;
@@ -23,7 +23,7 @@ class Creeper extends en.Mob {
 
 		var d = 5*Const.GRID;
 		for(e in Scenery.ALL) {
-			if( e.isTree() && mt.deepnight.Lib.distanceSqr(x,y,e.x,e.y)<=d*d ) {
+			if( e.isTree() && dn.Lib.distanceSqr(x,y,e.x,e.y)<=d*d ) {
 				e.solid = false;
 				e.explode();
 			}

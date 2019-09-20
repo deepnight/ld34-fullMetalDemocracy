@@ -1,7 +1,5 @@
 package en;
 
-import mt.MLib;
-
 class Human extends Entity {
 	public static var ALL : Array<Human> = [];
 	var originX			: Float;
@@ -28,8 +26,8 @@ class Human extends Entity {
 
 		spr.set("humanIdle");
 
-		spr.anim.registerStateAnim("humanRun",2, function() return MLib.fabs(dx)>=runSpd*0.9 || MLib.fabs(dy)>=runSpd*0.9);
-		//spr.anim.registerStateAnim("humanWalk",1, function() return MLib.fabs(dx)>=spd*0.7 || MLib.fabs(dy)>=spd*0.7);
+		spr.anim.registerStateAnim("humanRun",2, function() return M.fabs(dx)>=runSpd*0.9 || M.fabs(dy)>=runSpd*0.9);
+		//spr.anim.registerStateAnim("humanWalk",1, function() return M.fabs(dx)>=spd*0.7 || M.fabs(dy)>=spd*0.7);
 		spr.anim.registerStateAnim("humanIdle",0);
 
 		Game.ME.scroller.add(spr, Const.DP_HUMANS);
@@ -70,7 +68,7 @@ class Human extends Entity {
 			ty = y;
 		}
 		if( !cd.has("idle") ) {
-			if( MLib.dist2Sq(tx-x, ty-y)<=5*5 ) {
+			if( M.dist2Sq(tx-x, ty-y)<=5*5 ) {
 				if( flee!=null ) {
 					var a = Math.atan2(y-flee.y, x-flee.x) + rnd(0,1.9,true);
 					var d = rnd(15,25);

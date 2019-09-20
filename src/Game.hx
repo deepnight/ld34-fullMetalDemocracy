@@ -1,10 +1,6 @@
 import en.*;
 
-import mt.MLib;
-import hxd.Key;
-import mt.deepnight.Tweenie;
-
-class Game extends mt.Process {
+class Game extends dn.Process {
 	public static var ME : Game;
 
 	public var fx			: Fx;
@@ -14,7 +10,7 @@ class Game extends mt.Process {
 	public var level		: Level;
 	public var ended					: Bool;
 	var lid(get,never)		: Int; inline function get_lid() return level.lid;
-	var lastMsg				: mt.Process;
+	var lastMsg				: dn.Process;
 
 	public function new(?lid=0) {
 		super(Main.ME);
@@ -238,7 +234,7 @@ class Game extends mt.Process {
 
 
 	function getScore() {
-		return MLib.round( (1-2*MiniMap.ME.creepRatio)*1000 );
+		return M.round( (1-2*MiniMap.ME.creepRatio)*1000 );
 	}
 
 
@@ -274,7 +270,7 @@ class Game extends mt.Process {
 		scroller.filter = f;
 		var r = 0.;
 		tw.createMs( r, tr, 2000).update( function() {
-			f.matrix = mt.deepnight.Color.getColorizeMatrixH2d(c, r, 1-r);
+			f.matrix = dn.Color.getColorizeMatrixH2d(c, r, 1-r);
 		});
 	}
 
@@ -305,7 +301,7 @@ class Game extends mt.Process {
 
 	override public function postUpdate() {
 		super.postUpdate();
-		mt.heaps.slib.SpriteLib.TMOD = tmod;
+		SpriteLib.TMOD = tmod;
 	}
 
 	function nextLevel() {
@@ -330,8 +326,8 @@ class Game extends mt.Process {
 		var s = 0.3;
 		scroller.x += ( -(current.x - Const.LWID*0.5) - scroller.x ) * s;
 		scroller.y += ( -(current.y - Const.LHEI*0.5) - scroller.y ) * s;
-		scroller.x = MLib.fclamp(scroller.x, -level.wid*Const.GRID+Const.LWID, 0);
-		scroller.y = MLib.fclamp(scroller.y, -level.hei*Const.GRID+Const.LHEI, 0);
+		scroller.x = M.fclamp(scroller.x, -level.wid*Const.GRID+Const.LWID, 0);
+		scroller.y = M.fclamp(scroller.y, -level.hei*Const.GRID+Const.LHEI, 0);
 
 		if( ended && Key.isPressed(Key.C) && !cd.hasSetF("clock",9999) ) {
 			Assets.SBANK.menu01(0.8);

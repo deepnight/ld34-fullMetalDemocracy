@@ -1,4 +1,4 @@
-class Main extends mt.Process {
+class Main extends dn.Process {
 	public static var ME : Main;
 	//public var cached			: h2d.Sprite;
 
@@ -15,15 +15,15 @@ class Main extends mt.Process {
 
 
 		onResize();
-		new mt.deepnight.GameFocusHelper(Boot.ME.s2d, Assets.font);
+		new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
 		delayer.addF( function() {
 			#if js
-			var music = new mt.deepnight.Sfx(hxd.Res.music_js);
+			var music = new dn.heaps.Sfx(hxd.Res.music_js);
 			#else
-			var music = new mt.deepnight.Sfx(hxd.Res.music);
+			var music = new dn.heaps.Sfx(hxd.Res.music);
 			#end
-			// var music = new mt.deepnight.Sfx(hxd.Res.music);
+			// var music = new dn.heaps.Sfx(hxd.Res.music);
 			music.playOnGroup(1, true, 0.7);
 			#if !debug
 			new Intro();
@@ -36,7 +36,7 @@ class Main extends mt.Process {
 	}
 
 
-	public function transition( p:mt.Process, cb:Void->Void ) {
+	public function transition( p:dn.Process, cb:Void->Void ) {
 		if( p!=null )
 			p.pause();
 
@@ -66,11 +66,11 @@ class Main extends mt.Process {
 		super.onResize();
 		// Auto scaling
 		if( Const.AUTO_SCALE_TARGET_WID>0 )
-			Const.SCALE = mt.MLib.ceil( w()/Const.AUTO_SCALE_TARGET_WID );
+			Const.SCALE = M.ceil( w()/Const.AUTO_SCALE_TARGET_WID );
 		else if( Const.AUTO_SCALE_TARGET_HEI>0 )
-			Const.SCALE = mt.MLib.ceil( h()/Const.AUTO_SCALE_TARGET_HEI );
-		Const.LWID = mt.MLib.ceil( w()/Const.SCALE );
-		Const.LHEI = mt.MLib.ceil( h()/Const.SCALE );
+			Const.SCALE = M.ceil( h()/Const.AUTO_SCALE_TARGET_HEI );
+		Const.LWID = M.ceil( w()/Const.SCALE );
+		Const.LHEI = M.ceil( h()/Const.SCALE );
 		root.setScale(Const.SCALE);
 	}
 
@@ -78,11 +78,11 @@ class Main extends mt.Process {
 		super.update();
 
 		if( hxd.Key.isPressed(hxd.Key.M) )
-			mt.deepnight.Sfx.toggleMuteGroup(1);
+			dn.heaps.Sfx.toggleMuteGroup(1);
 			// mt.flash.Sfx.toggleMuteChannel(1);
 
 		if( hxd.Key.isPressed(hxd.Key.S) )
-			mt.deepnight.Sfx.toggleMuteGroup(0);
+			dn.heaps.Sfx.toggleMuteGroup(0);
 			// mt.flash.Sfx.toggleMuteChannel(0);
 	}
 }

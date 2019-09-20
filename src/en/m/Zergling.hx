@@ -1,7 +1,5 @@
 package en.m;
 
-import mt.MLib;
-
 class Zergling extends en.Mob {
 	var originX			: Float;
 	var originY			: Float;
@@ -11,7 +9,7 @@ class Zergling extends en.Mob {
 	var ty				: Float;
 	var precision		: Float;
 	public var dir		= 1;
-	var shadow			: mt.heaps.slib.HSprite;
+	var shadow			: HSprite;
 
 	public function new(x,y, e:Null<Creeper>) {
 		super(x,y);
@@ -100,7 +98,7 @@ class Zergling extends en.Mob {
 	override function update() {
 		super.update();
 
-		if( MLib.dist2Sq(tx-x, ty-y)<=5*5 ) {
+		if( M.dist2Sq(tx-x, ty-y)<=5*5 ) {
 			var tries = 100;
 			do {
 				if( cd.has("fixed") ) {
@@ -122,8 +120,8 @@ class Zergling extends en.Mob {
 
 		if( !cd.has("idle") && !isStunned() ) {
 			var ta = Math.atan2(ty-y, tx-x);
-			ang += mt.deepnight.Lib.angularSubstractionRad(ta,ang)*(0.1+precision*0.9);
-			precision = MLib.fmin(1, precision+0.05);
+			ang += M.radSubstract(ta,ang)*(0.1+precision*0.9);
+			precision = M.fmin(1, precision+0.05);
 			dx+=Math.cos(ang)*spd;
 			dy+=Math.sin(ang)*spd;
 		}

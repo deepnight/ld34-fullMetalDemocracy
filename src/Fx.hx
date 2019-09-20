@@ -1,5 +1,6 @@
-import mt.heaps.HParticle;
-class Fx extends mt.Process {
+import dn.heaps.HParticle;
+
+class Fx extends dn.Process {
 	var pool : ParticlePool;
 	var addSb			: h2d.SpriteBatch;
 	// var adds			: Array<HParticle>;
@@ -7,7 +8,7 @@ class Fx extends mt.Process {
 	var normalSb		: h2d.SpriteBatch;
 	// var normals			: Array<HParticle>;
 
-	var lib(get,never)	: mt.heaps.slib.SpriteLib; inline function get_lib() return Assets.lib;
+	var lib(get,never)	: SpriteLib; inline function get_lib() return Assets.lib;
 
 	public function new() {
 		super(Game.ME);
@@ -203,7 +204,7 @@ class Fx extends mt.Process {
 		var p = alloc(lib.getTile("missileSmoke"), lx,ly);
 		p.alpha = 0.5;
 		p.rotation = Math.atan2(y-ly, x-lx);
-		p.setScale( (3+mt.deepnight.Lib.distance(lx,ly, x,y))/p.t.width );
+		p.setScale( (3+dn.Lib.distance(lx,ly, x,y))/p.t.width );
 		//p.moveAng(a, 1);
 		p.frict = 0.9;
 		p.fadeOutSpeed = 0.01;

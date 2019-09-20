@@ -1,13 +1,13 @@
-import mt.deepnight.Tweenie;
+import dn.Tweenie;
 
-class Outro extends mt.Process {
+class Outro extends dn.Process {
 
-	var cm			: mt.deepnight.Cinematic;
+	var cm			: dn.Cinematic;
 
 	public function new() {
 		super(Main.ME);
 
-		cm = new mt.deepnight.Cinematic(Const.FPS);
+		cm = new dn.Cinematic(Const.FPS);
 		createChildProcess(function(_) cm.update(tmod));
 
 		createRoot(Main.ME.root);

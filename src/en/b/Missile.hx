@@ -1,7 +1,5 @@
 package en.b;
 
-import mt.MLib;
-
 class Missile extends en.Bullet {
 	var target			: Entity;
 	var ang				: Float;
@@ -24,7 +22,7 @@ class Missile extends en.Bullet {
 		radius = 10;
 
 		var d = rnd(3,8);
-		var a = ang + rnd(MLib.PI*0.5, MLib.PI*0.8, true);
+		var a = ang + rnd(M.PI*0.5, M.PI*0.8, true);
 		dx = Math.cos(a)*d;
 		dy = Math.sin(a)*d;
 		frict = 0.9;
@@ -98,14 +96,14 @@ class Missile extends en.Bullet {
 			}
 			else if( !cd.has("lockDir") ) {
 				var ta = Math.atan2(target.y-y, target.x-x);
-				precision = MLib.fmin(1,precision);
-				ang += mt.deepnight.Lib.angularSubstractionRad(ta, ang)*(0.3+0.7*precision);
+				precision = M.fmin(1,precision);
+				ang += M.radSubstract(ta, ang)*(0.3+0.7*precision);
 				precision+=0.04;
 			}
 			dx+=Math.cos(ang)*spd;
 			dy+=Math.sin(ang)*spd;
 
-			if( MLib.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
+			if( M.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
 				cd.setF("lockDir", rnd(5,8));
 				dx*=0.9;
 				dy*=0.9;

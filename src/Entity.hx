@@ -1,7 +1,4 @@
-import mt.heaps.slib.*;
-import mt.MLib;
-
-class Entity extends mt.Process {
+class Entity extends dn.Process {
 	public var x		: Float;
 	public var y		: Float;
 	public var dx		: Float;
@@ -29,14 +26,14 @@ class Entity extends mt.Process {
 		initLife(1);
 		spd = 1;
 
-		spr = new mt.heaps.slib.HSprite(Assets.lib, "enemy");
+		spr = new HSprite(Assets.lib, "enemy");
 		spr.setCenterRatio(0.5,0.5);
 		Game.ME.scroller.add(spr, Const.DP_ENTITY);
 
 		setPosition(x,y);
 	}
 
-	inline function playSpatial(s:mt.deepnight.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
+	inline function playSpatial(s:dn.heaps.Sfx, x:Float, y:Float, maxDist:Float, ?vol=1.0) {
 		s.play(vol); // TODO placeholder, not supported for now
 	}
 
@@ -80,11 +77,11 @@ class Entity extends mt.Process {
 
 	public function isColliding(e:Entity) {
 		var d = radius + e.radius;
-		return mt.deepnight.Lib.distanceSqr(x,y,e.x,e.y)<=d*d;
+		return dn.Lib.distanceSqr(x,y,e.x,e.y)<=d*d;
 	}
 
-	public inline function dist(e:Entity) return mt.deepnight.Lib.distance(x,y,e.x,e.y);
-	public inline function distSqr(e:Entity) return mt.deepnight.Lib.distanceSqr(x,y,e.x,e.y);
+	public inline function dist(e:Entity) return dn.Lib.distance(x,y,e.x,e.y);
+	public inline function distSqr(e:Entity) return dn.Lib.distanceSqr(x,y,e.x,e.y);
 
 	override public function postUpdate() {
 		super.postUpdate();
@@ -120,7 +117,7 @@ class Entity extends mt.Process {
 		dy*=Math.pow(frict,tmod);
 
 
-		if( MLib.fabs(dx)<=0.05*tmod ) dx = 0;
-		if( MLib.fabs(dy)<=0.05*tmod ) dy = 0;
+		if( M.fabs(dx)<=0.05*tmod ) dx = 0;
+		if( M.fabs(dy)<=0.05*tmod ) dy = 0;
 	}
 }

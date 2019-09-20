@@ -1,7 +1,4 @@
-import mt.MLib;
-import mt.deepnight.Color;
-
-class MiniMap extends mt.Process {
+class MiniMap extends dn.Process {
 	public static var ME : MiniMap;
 
 	var tg : h2d.TileGroup;

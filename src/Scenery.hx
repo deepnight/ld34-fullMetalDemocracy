@@ -32,7 +32,7 @@ class Scenery {
 	inline function irnd(min,max,?sign) return Lib.irnd(min,max,sign);
 
 	public inline function isColliding(e:Entity) {
-		return !exploded && dn.Lib.distanceSqr(Std.int(x), Std.int(y), e.x, e.y) <= 30*30;
+		return !exploded && dn.M.distSqr(Std.int(x), Std.int(y), e.x, e.y) <= 30*30;
 	}
 
 	public function isTree() {

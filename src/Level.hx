@@ -164,7 +164,7 @@ class Level extends dn.Process {
 	public function addCreepArea(cx,cy,r) {
 		for(x in cx-r...cx+r+1)
 			for(y in cy-r...cy+r+1)
-				if( dn.Lib.distanceSqr(cx,cy,x,y)<=r*r )
+				if( dn.M.distSqr(cx,cy,x,y)<=r*r )
 					addCreep(x,y, x==cx && y==cy);
 	}
 

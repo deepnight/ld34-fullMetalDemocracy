@@ -204,7 +204,7 @@ class Fx extends dn.Process {
 		var p = alloc(lib.getTile("missileSmoke"), lx,ly);
 		p.alpha = 0.5;
 		p.rotation = Math.atan2(y-ly, x-lx);
-		p.setScale( (3+dn.Lib.distance(lx,ly, x,y))/p.t.width );
+		p.setScale( (3+dn.M.dist(lx,ly, x,y))/p.t.width );
 		//p.moveAng(a, 1);
 		p.frict = 0.9;
 		p.fadeOutSpeed = 0.01;

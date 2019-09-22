@@ -77,11 +77,11 @@ class Entity extends dn.Process {
 
 	public function isColliding(e:Entity) {
 		var d = radius + e.radius;
-		return dn.Lib.distanceSqr(x,y,e.x,e.y)<=d*d;
+		return dn.M.distSqr(x,y,e.x,e.y)<=d*d;
 	}
 
-	public inline function dist(e:Entity) return dn.Lib.distance(x,y,e.x,e.y);
-	public inline function distSqr(e:Entity) return dn.Lib.distanceSqr(x,y,e.x,e.y);
+	public inline function dist(e:Entity) return dn.M.dist(x,y,e.x,e.y);
+	public inline function distSqr(e:Entity) return dn.M.distSqr(x,y,e.x,e.y);
 
 	override public function postUpdate() {
 		super.postUpdate();

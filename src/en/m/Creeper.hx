@@ -23,7 +23,7 @@ class Creeper extends en.Mob {
 
 		var d = 5*Const.GRID;
 		for(e in Scenery.ALL) {
-			if( e.isTree() && dn.Lib.distanceSqr(x,y,e.x,e.y)<=d*d ) {
+			if( e.isTree() && dn.M.distSqr(x,y,e.x,e.y)<=d*d ) {
 				e.solid = false;
 				e.explode();
 			}

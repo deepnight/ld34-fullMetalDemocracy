@@ -68,7 +68,7 @@ class Human extends Entity {
 			ty = y;
 		}
 		if( !cd.has("idle") ) {
-			if( M.dist2Sq(tx-x, ty-y)<=5*5 ) {
+			if( M.distSqr(x,y,tx,ty)<=5*5 ) {
 				if( flee!=null ) {
 					var a = Math.atan2(y-flee.y, x-flee.x) + rnd(0,1.9,true);
 					var d = rnd(15,25);

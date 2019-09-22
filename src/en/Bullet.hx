@@ -33,7 +33,7 @@ class Bullet extends Entity {
 				onHit(e);
 
 
-		if( ftime>=maxTime || dn.Lib.distanceSqr(x,y,ox,oy)>=maxRange*maxRange ) {
+		if( ftime>=maxTime || dn.M.distSqr(x,y,ox,oy)>=maxRange*maxRange ) {
 			Game.ME.level.addBulletHole(x,y);
 			Game.ME.fx.explosion(x,y,1);
 			destroy();

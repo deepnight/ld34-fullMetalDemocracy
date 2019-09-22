@@ -103,7 +103,8 @@ class Missile extends en.Bullet {
 			dx+=Math.cos(ang)*spd;
 			dy+=Math.sin(ang)*spd;
 
-			if( M.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
+			if( M.distSqr(target.x, target.y, x,y)<=25*25 ) {
+			// if( M.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
 				cd.setF("lockDir", rnd(5,8));
 				dx*=0.9;
 				dy*=0.9;

@@ -77,7 +77,7 @@ class Leg extends Entity {
 			var bx = quad.bodyX + Math.cos(a)*r;
 			var by = quad.bodyY + Math.sin(a)*r;
 			arm.setPosition(x + (bx-x)*0.5, y + (by-y)*0.5);
-			arm.scaleX = dn.Lib.distance(bx,by, x,y) / arm.tile.width;
+			arm.scaleX = dn.M.dist(bx,by, x,y) / arm.tile.width;
 			arm.rotation = a;
 
 			footBox.setPosition(x-Math.cos(a)*5,y-Math.sin(a)*5);
@@ -86,7 +86,7 @@ class Leg extends Entity {
 
 			bodyBox.setPosition(bx,by);
 			bodyBox.rotation = a;
-			bodyBox.scaleX = dn.Lib.distance(bx,by, x,y)*0.4 / bodyBox.tile.width;
+			bodyBox.scaleX = dn.M.dist(bx,by, x,y)*0.4 / bodyBox.tile.width;
 
 			spr.setScale(1+z*0.4);
 			spr.y+=5;
@@ -98,7 +98,7 @@ class Leg extends Entity {
 	}
 
 	public function inBadPosition() {
-		var d = dn.Lib.distanceSqr(x, y, quad.x, quad.y);
+		var d = dn.M.distSqr(x, y, quad.x, quad.y);
 		return d<=40*40 || d>=45*45;
 	}
 

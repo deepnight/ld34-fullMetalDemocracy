@@ -168,7 +168,7 @@ class Quad extends Entity {
 			var a = Math.atan2(ty-y, tx-x);
 			dx+=Math.cos(a)*spd*tmod;
 			dy+=Math.sin(a)*spd*tmod;
-			if( dn.Lib.distanceSqr(x,y, tx,ty)<=10*10 ) {
+			if( dn.M.distSqr(x,y, tx,ty)<=10*10 ) {
 				tx = ty = null;
 				cd.setF("idle", rnd(60,90));
 			}
@@ -179,7 +179,7 @@ class Quad extends Entity {
 		for(e in ALL)
 			if( e!=this && !e.destroyed ) {
 				var a = Math.atan2(e.y-y, e.x-x);
-				var d = M.dist2(e.x-x, e.y-y);
+				var d = M.dist(x,y, e.x,e.y);
 				if( d<=60 ) {
 					var r = 0.3;
 					dx+=-Math.cos(a)*r*tmod;

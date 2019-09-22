@@ -98,7 +98,7 @@ class Zergling extends en.Mob {
 	override function update() {
 		super.update();
 
-		if( M.dist2Sq(tx-x, ty-y)<=5*5 ) {
+		if( M.distSqr(tx, ty, x,y)<=5*5 ) {
 			var tries = 100;
 			do {
 				if( cd.has("fixed") ) {

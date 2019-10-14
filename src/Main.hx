@@ -18,10 +18,10 @@ class Main extends dn.Process {
 		new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
 		delayer.addF( function() {
-			#if js
-			var music = new dn.heaps.Sfx(hxd.Res.music_js);
-			#else
+			#if hl
 			var music = new dn.heaps.Sfx(hxd.Res.music);
+			#else
+			var music = new dn.heaps.Sfx(hxd.Res.music_js);
 			#end
 			// var music = new dn.heaps.Sfx(hxd.Res.music);
 			music.playOnGroup(1, true, 0.7);

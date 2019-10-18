@@ -6,7 +6,7 @@ class Main extends dn.Process {
 		super();
 		ME = this;
 
-		hxd.Res.initEmbed({ compressSounds:true });
+		hxd.Res.initEmbed();
 		Assets.init();
 		hxd.Timer.wantedFPS = Const.FPS;
 
@@ -18,13 +18,7 @@ class Main extends dn.Process {
 		new dn.heaps.GameFocusHelper(Boot.ME.s2d, Assets.font);
 
 		delayer.addF( function() {
-			#if hl
-			var music = new dn.heaps.Sfx(hxd.Res.music);
-			#else
-			var music = new dn.heaps.Sfx(hxd.Res.music_js);
-			#end
-			// var music = new dn.heaps.Sfx(hxd.Res.music);
-			music.playOnGroup(1, true, 0.7);
+			Assets.music.play(true);
 			#if !debug
 			new Intro();
 			#else
@@ -78,12 +72,10 @@ class Main extends dn.Process {
 		super.update();
 
 		if( hxd.Key.isPressed(hxd.Key.M) )
-			dn.heaps.Sfx.toggleMuteGroup(1);
-			// mt.flash.Sfx.toggleMuteChannel(1);
+			Assets.music.togglePlay(true);
 
 		if( hxd.Key.isPressed(hxd.Key.S) )
 			dn.heaps.Sfx.toggleMuteGroup(0);
-			// mt.flash.Sfx.toggleMuteChannel(0);
 	}
 }
 

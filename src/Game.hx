@@ -11,6 +11,7 @@ class Game extends dn.Process {
 	public var ended					: Bool;
 	var lid(get,never)		: Int; inline function get_lid() return level.lid;
 	var lastMsg				: dn.Process;
+	public var kidMode = false;
 
 	public function new(?lid=0) {
 		super(Main.ME);
@@ -335,6 +336,11 @@ class Game extends dn.Process {
 				nextLevel();
 			else
 				Main.ME.transition(this, function() new Game(lid));
+		}
+
+		if( Key.isPressed(Key.K) ) {
+			kidMode = !kidMode;
+			notify("Kid mode", kidMode?"ON":"Off");
 		}
 
 		#if debug

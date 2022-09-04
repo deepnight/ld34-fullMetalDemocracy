@@ -25,11 +25,12 @@ class MachineGun extends en.Bullet {
 
 		destroy();
 		Game.ME.fx.hit(e.x+rnd(0,4,true), e.y+rnd(0,4,true));
-		if( e.is(en.m.Creeper) )
+		if( e.is(en.m.Creeper) ) {
 			if( Std.random(3)==0 )
-				e.hit(3);
+				e.hit(Game.ME.kidMode ? 15 : 3);
 			else
-				e.hit(0);
+				e.hit(Game.ME.kidMode ? 10 : 0);
+		}
 		else
 			e.hit(1);
 

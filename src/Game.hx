@@ -2,6 +2,7 @@ import en.*;
 
 class Game extends dn.Process {
 	public static var ME : Game;
+	public static var kidMode = false;
 
 	public var fx			: Fx;
 	public var scroller		: h2d.Layers;
@@ -11,7 +12,6 @@ class Game extends dn.Process {
 	public var ended					: Bool;
 	var lid(get,never)		: Int; inline function get_lid() return level.lid;
 	var lastMsg				: dn.Process;
-	public var kidMode = false;
 
 	public function new(?lid=0) {
 		super(Main.ME);

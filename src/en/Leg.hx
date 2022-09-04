@@ -124,7 +124,7 @@ class Leg extends Entity {
 					if( e.is(en.m.Zergling) && isColliding(e) && !Game.ME.ended )
 						e.hit(10);
 
-				if( !Game.ME.kidMode )
+				if( !Game.kidMode )
 					for(e in en.Human.ALL)
 						if( isColliding(e) )
 							e.hit(1);

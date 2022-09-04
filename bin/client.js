@@ -3716,7 +3716,6 @@ var Game = function(lid) {
 	if(lid == null) {
 		lid = 0;
 	}
-	this.kidMode = false;
 	var _gthis = this;
 	dn_Process.call(this,Main.ME);
 	Game.ME = this;
@@ -4742,8 +4741,8 @@ Game.prototype = $extend(dn_Process.prototype,{
 			}
 		}
 		if(hxd_Key.isPressed(75)) {
-			this.kidMode = !this.kidMode;
-			this.notify("Kid mode",this.kidMode ? "ON" : "Off");
+			Game.kidMode = !Game.kidMode;
+			this.notify("Kid mode",Game.kidMode ? "ON" : "Off");
 		}
 		if(!this.ended && MiniMap.ME.creepRatio >= 0.5) {
 			this.gameOver();
@@ -12590,7 +12589,7 @@ en_Leg.prototype = $extend(Entity.prototype,{
 						e.hit(10);
 					}
 				}
-				if(!Game.ME.kidMode) {
+				if(!Game.kidMode) {
 					var _g = 0;
 					var _g1 = en_Human.ALL;
 					while(_g < _g1.length) {
@@ -13209,7 +13208,7 @@ en_Quad.prototype = $extend(Entity.prototype,{
 					all.push(e);
 					break;
 				case 1:
-					if(Game.ME.kidMode || !((e) instanceof en_m_Zergling)) {
+					if(Game.kidMode || !((e) instanceof en_m_Zergling)) {
 						all.push(e);
 					}
 					break;
@@ -13915,9 +13914,9 @@ en_b_MachineGun.prototype = $extend(en_Bullet.prototype,{
 		tmp.hit(e1 + tmp1,e.y + (sign ? Math.random() * 4 * (Std.random(2) * 2 - 1) : Math.random() * 4));
 		if(e.is(en_m_Creeper)) {
 			if(Std.random(3) == 0) {
-				e.hit(Game.ME.kidMode ? 15 : 3);
+				e.hit(Game.kidMode ? 15 : 3);
 			} else {
-				e.hit(Game.ME.kidMode ? 10 : 0);
+				e.hit(Game.kidMode ? 10 : 0);
 			}
 		} else {
 			e.hit(1);
@@ -14200,7 +14199,7 @@ en_b_Missile.prototype = $extend(en_Bullet.prototype,{
 	}
 	,onHit: function(e) {
 		en_Bullet.prototype.onHit.call(this,e);
-		if(!Game.ME.kidMode && ((e) instanceof en_m_Zergling)) {
+		if(!Game.kidMode && ((e) instanceof en_m_Zergling)) {
 			return;
 		}
 		this.destroyed = true;
@@ -56784,6 +56783,7 @@ dn_Process.END_OF_FRAME_CALLBACKS = new dn_struct_FixedArray(null,256);
 dn_Process.RESIZE_REQUESTED = true;
 dn_Process.PROFILING = false;
 dn_Process.PROFILER_TIMES = new haxe_ds_StringMap();
+Game.kidMode = false;
 Scenery.ALL = [];
 Xml.Element = 0;
 Xml.PCData = 1;

@@ -44,7 +44,7 @@ class Missile extends en.Bullet {
 	override function onHit(e:Entity) {
 		super.onHit(e);
 
-		if( Std.is(e, en.m.Zergling) )
+		if( Std.isOfType(e, en.m.Zergling) )
 			return;
 
 		destroy();

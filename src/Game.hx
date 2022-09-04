@@ -270,7 +270,7 @@ class Game extends dn.Process {
 		scroller.filter = f;
 		var r = 0.;
 		tw.createMs( r, tr, 2000).update( function() {
-			f.matrix = dn.Color.getColorizeMatrixH2d(c, r, 1-r);
+			f.matrix = Color.getColorizeMatrixH2d(c, r, 1-r);
 		});
 	}
 
@@ -301,7 +301,7 @@ class Game extends dn.Process {
 
 	override public function postUpdate() {
 		super.postUpdate();
-		SpriteLib.TMOD = tmod;
+		Assets.lib.tmod = tmod;
 	}
 
 	function nextLevel() {

@@ -108,11 +108,11 @@ class MiniMap extends dn.Process {
 					}
 
 			for(e in en.Mob.ALL)
-				if( Std.is(e,en.m.Zergling) )
+				if( Std.isOfType(e,en.m.Zergling) )
 					dot(e.x, e.y, 0x8E7BEA );
 
 			for(e in en.Mob.ALL)
-				if( Std.is(e,en.m.Creeper) )
+				if( Std.isOfType(e,en.m.Creeper) )
 					icon(e.x, e.y, 0xff0000, Assets.lib.getTile("triangle"));
 
 			for(e in en.Quad.ALL)

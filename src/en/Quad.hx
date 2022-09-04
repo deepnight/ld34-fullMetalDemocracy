@@ -121,7 +121,7 @@ class Quad extends Entity {
 						all.push(e);
 
 					case 1 :
-						if( !Std.is(e,en.m.Zergling) )
+						if( !Std.isOfType(e,en.m.Zergling) )
 							all.push(e);
 				}
 		}

@@ -37,7 +37,7 @@ class Entity extends dn.Process {
 		s.play(vol); // TODO placeholder, not supported for now
 	}
 
-	public function is(t:Dynamic) return Std.is(this, t);
+	public function is(t:Dynamic) return Std.isOfType(this, t);
 
 	function initLife(v) {
 		life = maxLife = v;

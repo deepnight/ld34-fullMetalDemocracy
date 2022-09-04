@@ -1,5 +1,5 @@
 class Assets {
-	public static var SBANK	= dn.heaps.Sfx.importDirectory("sfx");
+	public static var SBANK	= dn.heaps.assets.SfxDirectory.load("sfx",true);
 	public static var font			: h2d.Font;
 	public static var fontOutline	: h2d.Font;
 	public static var lib			: SpriteLib;
@@ -9,7 +9,7 @@ class Assets {
 		if( font!=null )
 			throw "init twice";
 
-		lib = dn.heaps.slib.assets.Atlas.load("lib.atlas");
+		lib = dn.heaps.assets.Atlas.load("lib.atlas");
 		// lib = dn.heaps.slib.assets.TexturePacker.load("lib.xml");
 
 		font = hxd.Res.fonts.alterebro.toFont();

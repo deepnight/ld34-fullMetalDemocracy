@@ -72,7 +72,7 @@ class Main extends dn.Process {
 		super.update();
 
 		if( hxd.Key.isPressed(hxd.Key.M) )
-			Assets.music.togglePlay(true);
+			Assets.music.togglePlayPause();
 
 		if( hxd.Key.isPressed(hxd.Key.S) )
 			dn.heaps.Sfx.toggleMuteGroup(0);

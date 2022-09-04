@@ -44,7 +44,7 @@ class Missile extends en.Bullet {
 	override function onHit(e:Entity) {
 		super.onHit(e);
 
-		if( Std.isOfType(e, en.m.Zergling) )
+		if( !kidMode && Std.isOfType(e, en.m.Zergling) )
 			return;
 
 		destroy();
@@ -104,7 +104,6 @@ class Missile extends en.Bullet {
 			dy+=Math.sin(ang)*spd;
 
 			if( M.distSqr(target.x, target.y, x,y)<=25*25 ) {
-			// if( M.dist2Sq(target.x-x, target.y-y)<=25*25 ) {
 				cd.setF("lockDir", rnd(5,8));
 				dx*=0.9;
 				dy*=0.9;

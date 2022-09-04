@@ -1,4 +1,7 @@
 class Entity extends dn.Process {
+	public var game(get,never): Game; inline function get_game() return Game.ME;
+	public var kidMode(get,never): Bool; inline function get_kidMode() return Game.ME.kidMode;
+	
 	public var x		: Float;
 	public var y		: Float;
 	public var dx		: Float;

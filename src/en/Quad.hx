@@ -153,10 +153,11 @@ class Quad extends Entity {
 		#end
 
 		if( isActive() ) {
-			if( Key.isDown(Key.LEFT) ) dx-=spd*tmod;
-			if( Key.isDown(Key.RIGHT) ) dx+=spd*tmod;
-			if( Key.isDown(Key.UP) ) dy-=spd*tmod;
-			if( Key.isDown(Key.DOWN) ) dy+=spd*tmod;
+			final pad = 1;
+			if( Key.isDown(Key.LEFT) && cx>=pad ) dx-=spd*tmod;
+			if( Key.isDown(Key.RIGHT) && cx<Game.ME.level.wid-pad ) dx+=spd*tmod;
+			if( Key.isDown(Key.UP) && y>=pad ) dy-=spd*tmod;
+			if( Key.isDown(Key.DOWN) && cy<Game.ME.level.hei-pad ) dy+=spd*tmod;
 			if( Key.isPressed(Key.SPACE) )
 				Game.ME.switchCurrent();
 		}
